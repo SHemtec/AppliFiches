@@ -16,10 +16,7 @@ class Client
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $FirstName = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $LastName = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Tel = null;
@@ -33,9 +30,13 @@ class Client
     #[ORM\OneToMany(targetEntity: Intervention::class, mappedBy: 'client', orphanRemoval: true)]
     private Collection $Intervention;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
     public function __construct()
     {
         $this->Intervention = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -43,26 +44,14 @@ class Client
         return $this->id;
     }
 
-    public function getFirstName(): ?string
+    public function getName(): ?string
     {
-        return $this->FirstName;
+        return $this->name;
     }
 
-    public function setFirstName(string $FirstName): static
+    public function setName(string $Name): static
     {
-        $this->FirstName = $FirstName;
-
-        return $this;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->LastName;
-    }
-
-    public function setLastName(string $LastName): static
-    {
-        $this->LastName = $LastName;
+        $this->name = $Name;
 
         return $this;
     }
@@ -117,6 +106,18 @@ class Client
                 $intervention->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

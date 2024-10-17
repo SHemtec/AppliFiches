@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Intervention index{% endblock %}
+
+{% block body %}
+    <h1>Intervention index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Materiel</th>
+                <th>MdpSession</th>
+                <th>Probleme</th>
+                <th>Operations</th>
+                <th>Cout</th>
+                <th>Nettoyage</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for intervention in interventions %}
+            <tr>
+                <td>{{ intervention.id }}</td>
+                <td>{{ intervention.Materiel }}</td>
+                <td>{{ intervention.MdpSession }}</td>
+                <td>{{ intervention.Probleme }}</td>
+                <td>{{ intervention.Operations }}</td>
+                <td>{{ intervention.Cout }}</td>
+                <td>{{ intervention.Nettoyage ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_intervention_show', {'id': intervention.id}) }}">show</a>
+                    <a href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_intervention_new') }}">Create new</a>
+{% endblock %}

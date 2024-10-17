@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+
+    <main class="clientShow">
+        <h1>{{ client.name }}</h1>
+
+        <article class="clientInfo">
+            <h2>Informations</h2>
+            <section>
+                <span>{{ client.name }}</span>
+                <span>{{ client.tel }}</span>
+                <span>{{ client.email }}</span>
+                <span>{{ client.createdAt|date('d/m/Y') }}</span>
+            </section>
+            <a href="{{ path('app_client_edit', {'id': client.id}) }}"><i class="bi bi-pencil-square"></i></a>
+        </article>
+
+        <article class="clientInter">
+            <h2>{{ interventions|length }} Interventions</h2>
+            <a class="newInterButton" id="createInterventionButton" data-client-id="{{ client.id }}">+ Nouvelle intervention</a>
+            <section>
+                {% for inter in interventions %}
+                    <a href="{{ path('app_intervention_show', {'id': inter.id}) }}" content="intervention" class="intervention" id="{{ inter.id }}">
+                        <div class="interventionContent">
+                            <section class="interventionContentImg">
+                                <img src="" alt="">
+                            </section>
+
+                            <div class="interventionInfo">
+                                <h3>{{ inter.Materiel }}</h3>
+                                <span>{{ inter.Probleme }}</span>
+
+                                {# si intervention cloturée, afficher date de cloture sinon date de création #}
+                                {% if inter.finishedAt %}
+                                    <span>Clôturée le : {{ inter.finishedAt|date('d/m/Y h:i') }}</span>
+                                {% else %}
+                                    <span>Créée le : {{ inter.createdAt|date('d/m/Y h:i') }}</span>
+                                {% endif %}
+
+                                {% if inter.statut != 2 %}
+                                    <form action="{{ path('app_intervention_close', {'id': inter.id}) }}" method="post">
+                                        <input type="hidden" name="redirect_url" value="{{ app.request.uri }}">
+                                        <button type="submit" class="clientInterClotureBtn">
+                                            <i class="bi bi-check-circle"></i> Clôturer l'intervention
+                                        </button>
+                                    </form>
+                                {% endif %}
+
+                                <span class="interStatut">
+                                    {% if inter.statut == 0 %}
+                                        <i class="bi bi-x-circle" style="color: red" title="Non traité"></i>
+                                    {% elseif inter.statut == 1 %}
+                                        <i class="bi bi-clock" style="color: orange"  title="En cours"></i>
+                                    {% elseif inter.statut == 2 %}
+                                        <i class="bi bi-check-circle" style="color: green"  title="Terminé"></i>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </section>
+
+        </article>
+    </main>
+
+    <div id="interventionModal" class="interventionModal">
+        <div class="interventionModalContent">
+            <span class="interventionModalClose">&times;</span>
+            <div id="interventionModalBody" class="interventionModalBody">
+                <!-- Form will be loaded here -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/intervention.js') }}"></script>
+{% endblock %}

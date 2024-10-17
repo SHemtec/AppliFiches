@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client index{% endblock %}
+
+{% block body %}
+    <main class="clientPage">
+        <h1>Clients enregistrés</h1>
+
+
+
+        <article class="clientWrapper">
+            <div class="createClientButtonWrapper">
+                <a id="createClientButton">Ajouter un client</a>
+            </div>
+            {% for client in clients %}
+            <a href="{{ path('app_client_show', {'id': client.id}) }}" content="client" class="client" id="{{ client.id }}">
+                <div class="clientContent">
+                    <section class="clientContentImg">
+                        <img src="" alt="">
+                    </section>
+
+                    <div class="clientInfo">
+                        <h2>{{ client.name}}</h2>
+                        {% if client.email %}
+                            <span>{{ client.email }}</span>
+                        {% else %}
+                            <span>{{ client.tel }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </article>
+    </main>
+
+    <div id="clientModal" class="clientModal">
+        <div class="clientModalContent">
+            <span class="clientModalClose">&times;</span>
+            <div id="clientModalBody" class="clientModalBody">
+                <!-- Form will be loaded here -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/client.js') }}"></script>
+{% endblock %}

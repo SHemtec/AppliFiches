@@ -1,0 +1,411 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .4rem 2rem;
+    background: #007bff;
+    color: white;
+    font-size: 1.3em;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+    font-weight: 400;
+}
+
+nav a {
+    color: #000000;
+    text-decoration: none;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+main {
+    width: 100%;
+}
+
+.clientPage {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    position: relative;
+    font-weight: 500;
+    font-size: 2.3em;
+}
+
+main .clientWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 2rem 0;
+    gap: 1rem;
+    height: 600px;
+    overflow-y: auto ;
+    width: 80%;
+}
+
+main .clientWrapper .client {
+    width: 100%;
+    max-width: 85%;
+    padding: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+main .clientWrapper .client h2 {
+    margin: 0 0 10px 0;
+}
+
+main .createClientButtonWrapper {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin:0 0 4rem 0;
+    font-weight: 400;
+    position: relative;
+}
+
+main .createClientButtonWrapper a {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+main .clientWrapper .client .clientContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 1rem;
+}
+
+main .clientWrapper .client .clientInfo {
+    color: black;
+}
+
+main .clientWrapper .client .clientInfo span {
+    color: #818181;
+}
+
+.clientModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.clientModal .clientModalContent {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 10px 20px;
+    border: 1px solid #888;
+    width: 40%;
+    border-radius: 10px;
+}
+
+.clientModal .clientModalContent .clientModalBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.clientModal .clientModalContent .clientModalClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+}
+
+.clientModal .clientModalContent .clientModalBody .clientCreateForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.clientModal .clientModalContent .clientModalBody .clientCreateForm .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+}
+
+.clientModal .clientModalContent .clientModalBody .clientCreateForm .formGroup input {
+    padding: 12px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.clientModal .clientModalContent .clientModalBody .clientCreateForm .formGroup label {
+    font-weight: 400;
+    margin: 0 0 5px 5px;
+}
+
+.clientModal .clientModalContent .clientModalBody .clientCreateForm button {
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.clientShow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+}
+
+.clientShow .clientInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    padding: 1rem;
+    border-radius: 10px;
+    position: relative;
+}
+
+.clientShow .clientInfo h2 {
+    font-size: 2.2em;
+    margin: 0 2rem;
+}
+
+.clientShow .clientInfo section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: .8rem;
+    font-size: 1.6em;
+    margin: 0 2rem;
+}
+
+.clientShow .clientInfo a {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2em;
+}
+
+.clientShow .clientInter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    padding: 1rem;
+    border-radius: 10px;
+    position: relative;
+}
+
+.clientShow .clientInter .newInterButton {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.3em;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clientShow .clientInter h2 {
+    font-size: 2.2em;
+    margin: 1rem 2rem 2rem 2rem;
+}
+
+.clientShow .clientInter section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: .8rem;
+    width: 100%;
+}
+
+.clientShow .clientInter section .intervention {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+.clientShow .clientInter section .intervention .interventionContent {
+    margin: 0 2rem;
+    padding: 1rem;
+}
+
+.clientShow .clientInter section .intervention .interventionContent h3 {
+    margin: 0;
+}
+
+.clientShow .clientInter section .intervention .interventionContent .interventionInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+}
+
+.clientShow .clientInter section .intervention .interventionContent .interventionInfo .clientInterClotureBtn {
+    font-size: 1em;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clientShow .clientInter section .intervention .interventionContent .interventionInfo .interStatut {
+    position: absolute;
+    font-size: 2.8em;
+    right: 2rem;
+}
+
+    /* Modal container */
+.interventionModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+/* Modal content */
+.interventionModalContent {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* Close button */
+.interventionModalClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.interventionModalClose:hover,
+.interventionModalClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form styles */
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup input {
+    padding: 12px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup label {
+    font-weight: 400;
+    margin: 0 0 5px 5px;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm button {
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+

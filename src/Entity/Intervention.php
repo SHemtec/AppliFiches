@@ -33,7 +33,7 @@ class Intervention
     private ?float $Cout = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $Nettoy�age = null;
+    private ?bool $Nettoyage = null;
 
     #[ORM\ManyToOne(inversedBy: 'Intervention')]
     #[ORM\JoinColumn(nullable: false)]
@@ -45,9 +45,23 @@ class Intervention
     #[ORM\OneToMany(targetEntity: Test::class, mappedBy: 'intervention')]
     private Collection $Test;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $finishedAt = null;
+
+    #[ORM\Column]
+    private ?int $statut = null;
+
     public function __construct()
     {
         $this->Test = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
+        $this->statut = 1;
     }
 
     public function getId(): ?int
@@ -115,14 +129,14 @@ class Intervention
         return $this;
     }
 
-    public function isNettoy�age(): ?bool
+    public function isNettoyage(): ?bool
     {
-        return $this->Nettoy�age;
+        return $this->Nettoyage;
     }
 
-    public function setNettoy�age(?bool $Nettoy�age): static
+    public function setNettoyage(?bool $Nettoyage): static
     {
-        $this->Nettoy�age = $Nettoy�age;
+        $this->Nettoyage = $Nettoyage;
 
         return $this;
     }
@@ -165,6 +179,54 @@ class Intervention
                 $test->setIntervention(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getFinishedAt(): ?\DateTimeImmutable
+    {
+        return $this->finishedAt;
+    }
+
+    public function setFinishedAt(?\DateTimeImmutable $finishedAt): static
+    {
+        $this->finishedAt = $finishedAt;
+
+        return $this;
+    }
+
+    public function getStatut(): ?int
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(int $statut): static
+    {
+        $this->statut = $statut;
 
         return $this;
     }
