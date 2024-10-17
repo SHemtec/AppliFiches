@@ -6,7 +6,9 @@
     <main class="clientPage">
         <h1>Clients enregistrés</h1>
 
-
+        <div class="searchBarWrapper">
+            <input style="width: 85%" type="text" id="searchBar" class="searchBar" placeholder="Rechercher des clients...">
+        </div>
 
         <article class="clientWrapper">
             <div class="createClientButtonWrapper">
@@ -45,4 +47,5 @@
 
 {% block javascripts %}
     <script src="{{ asset('js/client.js') }}"></script>
+    <script src="{{ asset('js/recherche.js') }}"></script>
 {% endblock %}

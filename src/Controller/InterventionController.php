@@ -15,11 +15,13 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/intervention')]
 final class InterventionController extends AbstractController
 {
-    #[Route(name: 'app_intervention_index', methods: ['GET'])]
+    #[Route('/', name: 'app_intervention_index', methods: ['GET'])]
     public function index(InterventionRepository $interventionRepository): Response
     {
+        $interventions = $interventionRepository->findBy([], ['createdAt' => 'DESC']);
+
         return $this->render('intervention/index.html.twig', [
-            'interventions' => $interventionRepository->findAll(),
+            'interventions' => $interventions,
         ]);
     }
 
@@ -117,7 +119,26 @@ final class InterventionController extends AbstractController
 
         $entityManager->flush();
 
-        $redirectUrl = $request->request->get('redirect_url', $this->generateUrl('app_intervention_edit', ['id' => $id]));
+        $redirectUrl = $request->request->get('redirect_url', $this->generateUrl('app_intervention_show', ['id' => $id]));
+
+        return $this->redirect($redirectUrl);
+    }
+
+    #[Route('/intervention/reopen/{id}', name: 'app_intervention_reopen', methods: ['POST'])]
+    public function reopen(Request $request, EntityManagerInterface $entityManager, int $id): Response
+    {
+        $intervention = $entityManager->getRepository(Intervention::class)->find($id);
+
+        if (!$intervention) {
+            throw $this->createNotFoundException('No intervention found for id ' . $id);
+        }
+
+        $intervention->setStatut(1); // Set status to "Terminé"
+        $intervention->setUpdatedAt(new \DateTimeImmutable()); // Set finishedAt to current date
+
+        $entityManager->flush();
+
+        $redirectUrl = $request->request->get('redirect_url', $this->generateUrl('app_intervention_show', ['id' => $id]));
 
         return $this->redirect($redirectUrl);
     }

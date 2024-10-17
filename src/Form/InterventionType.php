@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,12 +30,12 @@ class InterventionType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'row_attr' => ['class' => 'formGroup']
             ])
-            ->add('Probleme', TextType::class, [
+            ->add('Probleme', TextareaType::class, [
                 'label' => 'Problème',
                 'attr' => ['class' => 'form-control'],
                 'row_attr' => ['class' => 'formGroup']
             ])
-            ->add('Operations', TextType::class, [
+            ->add('Operations', TextareaType::class, [
                 'label' => 'Opérations',
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
@@ -50,7 +51,7 @@ class InterventionType extends AbstractType
                 'label' => 'Nettoyage',
                 'required' => false,
                 'attr' => ['class' => 'form-check-input'],
-                'row_attr' => ['class' => 'formGroup']
+                'row_attr' => ['class' => 'formGroupCheckbox'],
             ])
             ->add('statut', ChoiceType::class, [
                 'label' => 'Statut',
@@ -68,7 +69,7 @@ class InterventionType extends AbstractType
                 'label' => 'Client',
                 'attr' => ['class' => 'form-control'],
                 'row_attr' => ['class' => 'formGroup'],
-                'data' => $options['client']
+                'data' => $options['data']->getClient(),
             ])
         ;
     }

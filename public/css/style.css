@@ -9,7 +9,7 @@ body {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: .4rem 2rem;
     background: #007bff;
@@ -266,6 +266,9 @@ main .clientWrapper .client .clientInfo span {
     padding: 1rem;
     border-radius: 10px;
     position: relative;
+    margin-bottom: 1rem;
+    max-height: 900px;
+    overflow-y: scroll;
 }
 
 .clientShow .clientInter .newInterButton {
@@ -362,6 +365,7 @@ main .clientWrapper .client .clientInfo span {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    border-radius: 10px;
 }
 
 /* Close button */
@@ -379,22 +383,60 @@ main .clientWrapper .client .clientInfo span {
     cursor: pointer;
 }
 
-/* Form styles */
-.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup {
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    gap: .5rem;
 }
 
-.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup input {
+.interventionCreateForm .formGroup select {
     padding: 12px 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    background-color: white;
+    color: black;
 }
 
-.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup label {
+    /* Form styles */
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup input,textarea {
+    padding: 12px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroupCheckbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroupCheckbox input {
+    padding: 12px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup,.formGroupCheckbox label {
     font-weight: 400;
     margin: 0 0 5px 5px;
 }
@@ -408,4 +450,201 @@ main .clientWrapper .client .clientInfo span {
     color: white;
     cursor: pointer;
 }
+
+.interventionShow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.interventionShow h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.interventionShow .interventionInfo {
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+
+.interventionShow .interventionInfo h2 {
+    margin-bottom: 1rem;
+}
+
+.interventionShow .interventionInfo section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.interventionShow .interventionInfo section span {
+    font-size: 1.1em;
+}
+
+.interventionShow .interventionActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.interventionShow .interventionShowWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+}
+
+.interventionShow .interShowStatus {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.interventionShow .interShowStatus i {
+    font-size: 800%;
+    margin-right: 5%;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    color: white;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.interventionShow .interventionActions .btn-secondary {
+    background: #6c757d;
+}
+
+.interventionShow .interventionActions .btn-primary {
+    background: #007bff;
+}
+
+.interventionShow .interventionActions .btn-success {
+    background: #28a745;
+}
+
+.interventionShow .interventionActions .btn-danger {
+    background: #dc3545;
+}
+
+.interventionPage {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.interventionPage .interventionWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 2rem 0;
+    gap: 1rem;
+    height: 880px;
+    overflow-y: auto ;
+    width: 80%;
+}
+
+.interventionPage .interventionWrapper .intervention {
+    width: 100%;
+    max-width: 85%;
+    padding: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.interventionPage .interventionWrapper .intervention h2 {
+    margin: 0 0 10px 0;
+}
+
+.interventionPage .interventionWrapper .intervention .interventionContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 1rem;
+    position: relative;
+}
+
+.interventionPage .interventionWrapper .intervention .interventionInfo {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.interventionPage .interventionWrapper .intervention .interventionInfo h2,h3 {
+    margin: 0;
+}
+
+.interventionPage .interventionWrapper .intervention .interventionInfo span {
+    color: #818181;
+}
+
+.interventionPage .interventionWrapper .intervention .interventionInfo .interStatut {
+    position: absolute;
+    font-size: 2.8em;
+    right: 2rem;
+}
+
+.probSpan {
+    max-width: 80%;
+}
+
+.searchBarWrapper {
+    margin-bottom: 20px;
+    text-align: center;
+    width: 80%;
+}
+
+.searchBar {
+    width: 60%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+
+
+
+
+
 

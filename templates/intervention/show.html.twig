@@ -3,50 +3,63 @@
 {% block title %}Intervention{% endblock %}
 
 {% block body %}
-    <h1>Intervention</h1>
+    <main class="interventionShow">
+        <h1>Intervention</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ intervention.id }}</td>
-            </tr>
-            <tr>
-                <th>Materiel</th>
-                <td>{{ intervention.Materiel }}</td>
-            </tr>
-            <tr>
-                <th>MdpSession</th>
-                <td>{{ intervention.MdpSession }}</td>
-            </tr>
-            <tr>
-                <th>Probleme</th>
-                <td>{{ intervention.Probleme }}</td>
-            </tr>
-            <tr>
-                <th>Operations</th>
-                <td>{{ intervention.Operations }}</td>
-            </tr>
-            <tr>
-                <th>Cout</th>
-                <td>{{ intervention.Cout }}</td>
-            </tr>
-            <tr>
-                <th>Nettoyage</th>
-                <td>{{ intervention.Nettoyage ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <article class="interventionInfo">
+            <section class="interventionShowWrapper">
+                <h2>Détails de l'intervention</h2>
+                <span class="interShowStatus">
+                    {% if intervention.statut == 0 %}
+                        <i class="bi bi-x-circle" style="color: red" title="Non traité"></i>
+                    {% elseif intervention.statut == 1 %}
+                        <i class="bi bi-clock" style="color: orange"  title="En cours"></i>
+                    {% elseif intervention.statut == 2 %}
+                        <i class="bi bi-check-circle" style="color: green"  title="Terminé"></i>
+                    {% endif %}
+                </span>
 
-    <a href="{{ path('app_intervention_index') }}">back to list</a>
+                <span><strong>Matériel:</strong> {{ intervention.Materiel }}</span>
+                <span><strong>Mot de passe session:</strong> {{ intervention.MdpSession }}</span>
+                <span><strong>Problème:</strong> {{ intervention.Probleme }}</span>
+                <span><strong>Opérations:</strong> {{ intervention.Operations }}</span>
+                <span><strong>Coût:</strong> {{ intervention.Cout }}</span>
+                <span><strong>Nettoyage:</strong> {{ intervention.Nettoyage ? 'Oui' : 'Non' }}</span>
+                <span><strong>Créé le:</strong> {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
+                <span><strong>Clôturé le:</strong> {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</span>
+                <span><strong>Client:</strong> <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_client_show', {'id': intervention.client.id}) }}">{{ intervention.client.name }}</a></span>
+            </section>
+        </article>
 
-    <a href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">edit</a>
+        <div class="interventionActions">
+            <a href="{{ path('app_intervention_index') }}" class="btn btn-secondary">Retour à la liste</a>
+            <a id="editInterventionBtn" data-intervention-id="{{ intervention.id }}" class="btn btn-primary">Modifier</a>
+            {{ include('intervention/_delete_form.html.twig') }}
 
-    {{ include('intervention/_delete_form.html.twig') }}
+            {% if intervention.statut != 2 %}
+                <form action="{{ path('app_intervention_close', {'id': intervention.id}) }}" method="post">
+                    <button type="submit" class="btn btn-success">Clôturer l'intervention</button>
+                </form>
+            {% endif %}
 
-    {% if intervention.statut != 2 %}
-    <form action="{{ path('app_intervention_close', {'id': intervention.id}) }}" method="post">
-        <button type="submit" class="">Clôturer l'intervention</button>
-    </form>
-    {% endif %}
+            {% if intervention.statut == 2 %}
+                <form action="{{ path('app_intervention_reopen', {'id': intervention.id}) }}" method="post">
+                    <button type="submit" class="btn btn-success">Rouvrir l'intervention</button>
+                </form>
+            {% endif %}
+        </div>
+    </main>
+
+    <div id="editInterventionModal" class="interventionModal">
+        <div class="interventionModalContent">
+            <span class="interventionModalClose">&times;</span>
+            <div id="editInterventionModalBody" class="interventionModalBody">
+                <!-- Form will be loaded here -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/intervention.js') }}"></script>
 {% endblock %}

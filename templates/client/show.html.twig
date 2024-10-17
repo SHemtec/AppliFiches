@@ -35,9 +35,9 @@
 
                                 {# si intervention cloturée, afficher date de cloture sinon date de création #}
                                 {% if inter.finishedAt %}
-                                    <span>Clôturée le : {{ inter.finishedAt|date('d/m/Y h:i') }}</span>
+                                    <span style="color: green">Clôturé le : {{ inter.finishedAt|date('d/m/Y H:i') }}</span>
                                 {% else %}
-                                    <span>Créée le : {{ inter.createdAt|date('d/m/Y h:i') }}</span>
+                                    <span style="color: orange">Ajouté le : {{ inter.createdAt|date('d/m/Y H:i') }}</span>
                                 {% endif %}
 
                                 {% if inter.statut != 2 %}
