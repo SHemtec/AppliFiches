@@ -19,15 +19,25 @@
                     {% endif %}
                 </span>
 
-                <span><strong>Matériel:</strong> {{ intervention.Materiel }}</span>
-                <span><strong>Mot de passe session:</strong> {{ intervention.MdpSession }}</span>
-                <span><strong>Problème:</strong> {{ intervention.Probleme }}</span>
-                <span><strong>Opérations:</strong> {{ intervention.Operations }}</span>
-                <span><strong>Coût:</strong> {{ intervention.Cout }}</span>
-                <span><strong>Nettoyage:</strong> {{ intervention.Nettoyage ? 'Oui' : 'Non' }}</span>
-                <span><strong>Créé le:</strong> {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
-                <span><strong>Clôturé le:</strong> {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</span>
-                <span><strong>Client:</strong> <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_client_show', {'id': intervention.client.id}) }}">{{ intervention.client.name }}</a></span>
+                <section class="interInfoWrapper">
+                    <span><strong>Client:</strong> <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_client_show', {'id': intervention.client.id}) }}">{{ intervention.client.name }}</a></span>
+                    <span><strong>Tel:</strong> {{ intervention.client.tel }}</span>
+                    <span><strong>Matériel:</strong> {{ intervention.Materiel }}</span>
+                    <span><strong>Mot de passe session:</strong> {{ intervention.MdpSession }}</span>
+                    <span><strong>Problème:</strong> {{ intervention.Probleme }}</span>
+                    <span><strong>Opérations:</strong> {{ intervention.Operations }}</span>
+                    <span><strong>Coût:</strong> {{ intervention.Cout }}</span>
+                    <span><strong>Nettoyage:</strong> {{ intervention.Nettoyage ? 'Oui' : 'Non' }}</span>
+                    <span><strong>Créé le:</strong> {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
+                    <span class="cloture"><strong>Clôturé le:</strong> {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</span>
+                    {% if intervention.commandes|length > 0 %}
+                        <span><strong>Commandes:</strong>
+                        {% for commande in intervention.commandes %}
+                            <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_commandes_show', {'id': commande.id}) }}">{{ commande.produits }}</a>
+                        {% endfor %}
+                    </span>
+                    {% endif %}
+                </section>
             </section>
         </article>
 
@@ -35,6 +45,7 @@
             <a href="{{ path('app_intervention_index') }}" class="btn btn-secondary">Retour à la liste</a>
             <a id="editInterventionBtn" data-intervention-id="{{ intervention.id }}" class="btn btn-primary">Modifier</a>
             {{ include('intervention/_delete_form.html.twig') }}
+            <a id="printInterventionButton" class="btn btn-secondary">Imprimer la fiche</a>
 
             {% if intervention.statut != 2 %}
                 <form action="{{ path('app_intervention_close', {'id': intervention.id}) }}" method="post">
@@ -62,4 +73,5 @@
 
 {% block javascripts %}
     <script src="{{ asset('js/intervention.js') }}"></script>
+    <script src="{{ asset('js/print.js') }}"></script>
 {% endblock %}

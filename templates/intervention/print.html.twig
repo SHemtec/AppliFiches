@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Imprimer Intervention{% endblock %}
+
+{% block body %}
+    <main class="interventionPrint">
+        <h1>Intervention</h1>
+
+        <article class="interventionInfo">
+            <section class="interventionShowWrapper">
+                <h2>Détails de l'intervention</h2>
+                <span><strong>Matériel:</strong> {{ intervention.Materiel }}</span>
+                <span><strong>Mot de passe session:</strong> {{ intervention.MdpSession }}</span>
+                <span><strong>Problème:</strong> {{ intervention.Probleme }}</span>
+                <span><strong>Opérations:</strong> {{ intervention.Operations }}</span>
+                <span><strong>Coût:</strong> {{ intervention.Cout }}</span>
+                <span><strong>Nettoyage:</strong> {{ intervention.Nettoyage ? 'Oui' : 'Non' }}</span>
+                <span><strong>Créé le:</strong> {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
+                <span><strong>Clôturé le:</strong> {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</span>
+                <span><strong>Client:</strong> {{ intervention.client.name }}</span>
+            </section>
+        </article>
+    </main>
+{% endblock %}

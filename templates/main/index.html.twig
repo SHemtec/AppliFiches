@@ -1,20 +1,87 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <main class="accueil">
+        <button type="button" class="btn btn-primary" id="importButton">
+            Importer des fiches
+        </button>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="statsWrapper">
+            <div class="stat">
+                <h3>Nombre de clients</h3>
+                <p>{{ clientCount }}</p>
+            </div>
+            <div class="stat">
+                <h3>Nombre d'interventions</h3>
+                <p>{{ interventionCount }}</p>
+            </div>
+            <div class="stat">
+                <h3>Interventions clôturées</h3>
+                <p>{{ closedInterventionCount }}</p>
+            </div>
+        </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/sacha/Dev/SGMi/src/Controller/MainController.php</code></li>
-        <li>Your template at <code>/Users/sacha/Dev/SGMi/templates/main/index.html.twig</code></li>
-    </ul>
-</div>
+        <h1>Interventions en cours</h1>
+
+        <article class="interventionWrapper">
+            {% if ongoingInterventions is empty %}
+                <p class="noInterventions">Aucune intervention en cours</p>
+            {% else %}
+                {% for intervention in ongoingInterventions %}
+                    <a href="{{ path('app_intervention_show', {'id': intervention.id}) }}" content="intervention" class="intervention" id="{{ intervention.id }}">
+                        <div class="interventionContent">
+                            <section class="interventionContentImg">
+                                <img src="" alt="">
+                            </section>
+
+                            <div class="interventionInfo">
+                                <h2>{{ intervention.client.name }}</h2>
+                                <h3>{{ intervention.Materiel }}</h3>
+                                <span>{{ intervention.Probleme }}</span>
+                                <span style="color: orange">Ajouté le : {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
+                                {% if intervention.statut == 2 %}
+                                    <span style="color: green">Clôturé le : {{ intervention.finishedAt|date('d/m/Y H:i') }}</span>
+                                {% endif %}
+
+                                <span class="interStatut">
+                                    {% if intervention.statut == 0 %}
+                                        <i class="bi bi-x-circle" style="color: red" title="Non traité"></i>
+                                    {% elseif intervention.statut == 1 %}
+                                        <i class="bi bi-clock" style="color: orange" title="En cours"></i>
+                                    {% elseif intervention.statut == 2 %}
+                                        <i class="bi bi-check-circle" style="color: green" title="Terminé"></i>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% endif %}
+        </article>
+    </main>
+
+    {% for type, messages in app.flashes %}
+        <div class="flash-{{ type }}">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <div id="importModal" class="importModal">
+        <div class="importModalContent">
+            <span class="importModalClose">&times;</span>
+            <div id="importModalBody" class="importModalBody">
+                <!-- Form will be loaded here -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/intervention.js') }}"></script>
+    <script src="{{ asset('js/client.js') }}"></script>
+    <script src="{{ asset('js/import.js') }}"></script>
 {% endblock %}

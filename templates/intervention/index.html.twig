@@ -23,12 +23,14 @@
                             <h3>{{ intervention.Materiel }}</h3>
                             <span class="probSpan">{{ intervention.Probleme }}</span>
                             <span style="color: orange">Ajouté le : {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
-                            <span style="color: green">Clôturé le : {{ intervention.finishedAt|date('d/m/Y H:i') }}</span>
+                            {% if intervention.statut == 2 %}
+                                <span style="color: green">Clôturé le : {{ intervention.finishedAt|date('d/m/Y H:i') }}</span>
+                            {% endif %}
 
                             {% if intervention.statut != 2 %}
                                 <form action="{{ path('app_intervention_close', {'id': intervention.id}) }}" method="post">
                                     <input type="hidden" name="redirect_url" value="{{ app.request.uri }}">
-                                    <button type="submit" class="clientInterClotureBtn">
+                                    <button type="submit" class="btn btn-primary clientInterClotureBtn">
                                         <i class="bi bi-check-circle"></i> Clôturer l'intervention
                                     </button>
                                 </form>

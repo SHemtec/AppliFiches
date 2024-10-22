@@ -79,6 +79,15 @@ final class ClientController extends AbstractController
             return $this->redirectToRoute('app_client_show', ['id' => $client->getId()], Response::HTTP_SEE_OTHER);
         }
 
+        $form = $this->createForm(ClientType::class, $client);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_client_show', ['id' => $client->getId()], Response::HTTP_SEE_OTHER);
+        }
+
         return $this->render('client/show.html.twig', [
             'client' => $client,
             'interventions' => $interventions,
@@ -94,7 +103,7 @@ final class ClientController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_client_show', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('client/edit.html.twig', [

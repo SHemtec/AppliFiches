@@ -15,7 +15,7 @@
                 <span>{{ client.email }}</span>
                 <span>{{ client.createdAt|date('d/m/Y') }}</span>
             </section>
-            <a href="{{ path('app_client_edit', {'id': client.id}) }}"><i class="bi bi-pencil-square"></i></a>
+            <a id="editClientButton" data-client-id="{{ client.id }}" style="cursor: pointer"><i class="bi bi-pencil-square"></i></a>
         </article>
 
         <article class="clientInter">
@@ -48,12 +48,11 @@
                                         </button>
                                     </form>
                                 {% endif %}
-
                                 <span class="interStatut">
                                     {% if inter.statut == 0 %}
                                         <i class="bi bi-x-circle" style="color: red" title="Non traité"></i>
                                     {% elseif inter.statut == 1 %}
-                                        <i class="bi bi-clock" style="color: orange"  title="En cours"></i>
+                                        <i class="bi bi-clock" style="color: orange"  title="En cours"></i>                                      
                                     {% elseif inter.statut == 2 %}
                                         <i class="bi bi-check-circle" style="color: green"  title="Terminé"></i>
                                     {% endif %}
@@ -75,8 +74,18 @@
             </div>
         </div>
     </div>
+
+    <div id="editClientModal" class="clientModal">
+        <div class="clientModalContent">
+            <span class="clientModalClose">&times;</span>
+            <div id="editClientModalBody" class="clientModalBody">
+                <!-- Form will be loaded here -->
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/intervention.js') }}"></script>
+    <script src="{{ asset('js/client.js') }}"></script>
 {% endblock %}

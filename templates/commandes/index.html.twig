@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commandes index{% endblock %}
+
+{% block body %}
+    <main class="commandesPage">
+        <h1>Commandes enregistrées</h1>
+
+        <div class="searchBarWrapper">
+            <input type="text" id="searchBar" class="searchBar" placeholder="Rechercher des commandes...">
+        </div>
+
+        <article class="commandesWrapper">
+            {% for commande in commandes %}
+                <a href="{{ path('app_commandes_show', {'id': commande.id}) }}" class="commande" id="{{ commande.id }}">
+                    <div class="commandeContent">
+                        <div class="commandeInfo">
+                            <h2>{{ commande.Produits }}</h2>
+                            <span class="date">Ajouté le : {{ commande.createdAt ? commande.createdAt|date('d/m/Y H:i') : '' }}</span>
+                            <span class="date">Commandé le : {{ commande.orderedAt ? commande.orderedAt|date('d/m/Y H:i') : '' }}</span>
+                            <span class="status {{ commande.status ? 'status-commande' : 'status-non-commande' }}">
+                                {{ commande.status ? 'Commandé' : 'Pas commandé' }}
+                            </span>
+
+                            {% if commande.intervention %}
+                                <div class="interventionDetails">
+                                    <span><strong>{{ commande.intervention.client.name }}:</strong></span>
+                                    <span> {{ commande.intervention.materiel }}</span>
+                                    <span> {{ commande.intervention.probleme }}</span>
+                                </div>
+                            {% endif %}
+
+                            {% if commande.status == false %}
+                                <form action="{{ path('app_commandes_validate', {'id': commande.id}) }}" method="post">
+                                    <button type="submit" class="btn btn-primary">Valider la commande</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% else %}
+                <p class="noCommandes">Aucune commande trouvée</p>
+            {% endfor %}
+        </article>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/commandes.js') }}"></script>
+    <script src="{{ asset('js/recherche.js') }}"></script>
+{% endblock %}

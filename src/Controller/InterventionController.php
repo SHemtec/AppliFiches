@@ -47,9 +47,19 @@ final class InterventionController extends AbstractController
 
 
 
-    #[Route('/{id}', name: 'app_intervention_show', methods: ['GET'])]
-    public function show(Intervention $intervention): Response
+    #[Route('/{id}', name: 'app_intervention_show', methods: ['GET', 'POST'])]
+    public function show(Request $request, Intervention $intervention, EntityManagerInterface $entityManager): Response
     {
+        $form = $this->createForm(InterventionType::class, $intervention);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_intervention_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+
         return $this->render('intervention/show.html.twig', [
             'intervention' => $intervention,
         ]);
@@ -73,7 +83,7 @@ final class InterventionController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_intervention_delete', methods: ['POST'])]
+    #[Route('/del/{id}', name: 'app_intervention_delete', methods: ['POST'])]
     public function delete(Request $request, Intervention $intervention, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$intervention->getId(), $request->getPayload()->getString('_token'))) {
@@ -105,7 +115,7 @@ final class InterventionController extends AbstractController
         ]);
     }
 
-    #[Route('/intervention/close/{id}', name: 'app_intervention_close', methods: ['POST'])]
+    #[Route('/close/{id}', name: 'app_intervention_close', methods: ['POST'])]
     public function close(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
         $intervention = $entityManager->getRepository(Intervention::class)->find($id);
@@ -124,7 +134,7 @@ final class InterventionController extends AbstractController
         return $this->redirect($redirectUrl);
     }
 
-    #[Route('/intervention/reopen/{id}', name: 'app_intervention_reopen', methods: ['POST'])]
+    #[Route('/reopen/{id}', name: 'app_intervention_reopen', methods: ['POST'])]
     public function reopen(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
         $intervention = $entityManager->getRepository(Intervention::class)->find($id);
@@ -141,5 +151,13 @@ final class InterventionController extends AbstractController
         $redirectUrl = $request->request->get('redirect_url', $this->generateUrl('app_intervention_show', ['id' => $id]));
 
         return $this->redirect($redirectUrl);
+    }
+
+    #[Route('/{id}/print', name: 'app_intervention_print', methods: ['GET'])]
+    public function print(Intervention $intervention): Response
+    {
+        return $this->render('intervention/print.html.twig', [
+            'intervention' => $intervention,
+        ]);
     }
 }

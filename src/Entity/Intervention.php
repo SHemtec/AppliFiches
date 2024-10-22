@@ -57,11 +57,18 @@ class Intervention
     #[ORM\Column]
     private ?int $statut = null;
 
+    /**
+     * @var Collection<int, commandes>
+     */
+    #[ORM\OneToMany(targetEntity: commandes::class, mappedBy: 'intervention')]
+    private Collection $commandes;
+
     public function __construct()
     {
         $this->Test = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
         $this->statut = 1;
+        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,6 +234,36 @@ class Intervention
     public function setStatut(int $statut): static
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, commandes>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(commandes $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setIntervention($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(commandes $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getIntervention() === $this) {
+                $commande->setIntervention(null);
+            }
+        }
 
         return $this;
     }
