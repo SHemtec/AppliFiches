@@ -62,8 +62,8 @@
 
         <h2>Tests</h2>
 
-        <a href="{{ path('app_test_new', {'interventionId': intervention.id}) }}" class="btn btn-primary">Ajouter un test</a>
-        <section class="interInfoWrapper">
+        <a id="createTestButton" data-intervention-id="{{ intervention.id }}" class="btn btn-primary">Ajouter un test</a>        {{ include('test/_delete_form.html.twig') }}
+        <section class="interTestsWrapper">
             <!-- Existing content -->
             <section class="testSection">
                 {% for test in intervention.test %}
@@ -87,6 +87,15 @@
         <div class="interventionModalContent">
             <span class="interventionModalClose">&times;</span>
             <div id="editInterventionModalBody" class="interventionModalBody">
+                <!-- Form will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="createTestModal" class="interventionModal">
+        <div class="interventionModalContent">
+            <span class="interventionModalClose">&times;</span>
+            <div id="createTestModalBody" class="interventionModalBody">
                 <!-- Form will be loaded here -->
             </div>
         </div>

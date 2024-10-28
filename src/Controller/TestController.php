@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Intervention;
 use App\Entity\Test;
 use App\Entity\TestCapture;
 use App\Form\TestType;
@@ -24,24 +25,17 @@ final class TestController extends AbstractController
         ]);
     }
 
-    #[\Symfony\Component\Routing\Annotation\Route('/new', name: 'app_test_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/new/{interventionId}', name: 'app_test_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager, int $interventionId): Response
     {
+        $intervention = $entityManager->getRepository(Intervention::class)->find($interventionId);
         $test = new Test();
+        $test->setIntervention($intervention);
+
         $form = $this->createForm(TestType::class, $test);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $images = $form->get('photoFile')->getData();
-
-            if (!empty($images)) {
-                foreach ($images as $image) {
-                    $testCapture = new TestCapture();
-                    $testCapture->setImageFile($image);
-                    $test->addCapture($testCapture);
-                }
-            }
-
             $entityManager->persist($test);
             $entityManager->flush();
 
@@ -90,4 +84,6 @@ final class TestController extends AbstractController
 
         return $this->redirectToRoute('app_test_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

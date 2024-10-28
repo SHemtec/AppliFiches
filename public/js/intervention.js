@@ -51,3 +51,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const createTestModal = document.getElementById('createTestModal');
+    const createTestBtn = document.getElementById('createTestButton');
+    const createTestCloseBtn = createTestModal.getElementsByClassName('interventionModalClose')[0];
+
+    createTestBtn.onclick = function() {
+        console.log('createTestButton clicked');
+        const interventionId = createTestBtn.getAttribute('data-intervention-id');
+        fetch(`/test/new/${interventionId}`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('createTestModalBody').innerHTML = html;
+                createTestModal.style.display = 'block';
+            });
+    }
+
+    createTestCloseBtn.onclick = function() {
+        createTestModal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == createTestModal) {
+            createTestModal.style.display = 'none';
+        }
+    }
+});
