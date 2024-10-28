@@ -26,9 +26,6 @@ class Commandes
     #[ORM\Column]
     private ?bool $status = null;
 
-    #[ORM\ManyToOne(inversedBy: 'commandes')]
-    private ?Intervention $intervention = null;
-
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();

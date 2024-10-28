@@ -30,13 +30,13 @@
                     <span><strong>Nettoyage:</strong> {{ intervention.Nettoyage ? 'Oui' : 'Non' }}</span>
                     <span><strong>Créé le:</strong> {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
                     <span class="cloture"><strong>Clôturé le:</strong> {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</span>
-                    {% if intervention.commandes|length > 0 %}
+                   {#  {% if intervention.commandes|length > 0 %}
                         <span><strong>Commandes:</strong>
                         {% for commande in intervention.commandes %}
                             <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_commandes_show', {'id': commande.id}) }}">{{ commande.produits }}</a>
                         {% endfor %}
                     </span>
-                    {% endif %}
+                    {% endif %} #}
                 </section>
             </section>
         </article>
@@ -59,6 +59,28 @@
                 </form>
             {% endif %}
         </div>
+
+        <h2>Tests</h2>
+
+        <a href="{{ path('app_test_new', {'interventionId': intervention.id}) }}" class="btn btn-primary">Ajouter un test</a>
+        <section class="interInfoWrapper">
+            <!-- Existing content -->
+            <section class="testSection">
+                {% for test in intervention.test %}
+                    <div class="testContent">
+                        <h3>{{ test.Titre }}</h3>
+                        <span>{{ test.Description }}</span>
+                        {% if test.photoName != null %}
+                        <div class="testCaptures">
+                            <img src="{{ asset('uploads/' ~ test.photoName) }}" alt="Test Photo">
+                        </div>
+                        {% else %}
+                        <span> Ce test n'a pas de captures enregistrées</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </section>
+        </section>
     </main>
 
     <div id="editInterventionModal" class="interventionModal">

@@ -563,6 +563,46 @@ main .clientWrapper .client .clientInfo span {
     max-width: 60%;
 }
 
+.interventionShow .interTestsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+    width: 80%;
+    overflow-y: scroll;
+    max-height: 800px;
+    height: 100%;
+}
+
+.interventionShow .interTestsWrapper h2 {
+    margin: 0;
+}
+
+.interventionShow .interTestsWrapper .interTest {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.testCaptures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.testCaptures img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
 .btn {
     display: inline-block;
     font-weight: 400;
@@ -1040,38 +1080,3 @@ main .clientWrapper .client .clientInfo span {
     padding: 2rem 0;
 }
 
-.flash-success {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px;
-    border: 1px solid #c3e6cb;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.flash-error {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.flash-warning {
-    background-color: #fff3cd;
-    color: #856404;
-    padding: 10px;
-    border: 1px solid #ffeeba;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.flash-info {
-    background-color: #d1ecf1;
-    color: #0c5460;
-    padding: 10px;
-    border: 1px solid #bee5eb;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}

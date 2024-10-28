@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\TestRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: TestRepository::class)]
+#[Vich\Uploadable]
 class Test
 {
     #[ORM\Id]
@@ -18,22 +19,22 @@ class Test
     #[ORM\Column(length: 255)]
     private ?string $Titre = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'text')]
     private ?string $Description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Test')]
+    #[ORM\ManyToOne]
     private ?Intervention $intervention = null;
 
-    /**
-     * @var Collection<int, TestCapture>
-     */
-    #[ORM\OneToMany(targetEntity: TestCapture::class, mappedBy: 'test')]
-    private Collection $Capture;
+    #[Vich\UploadableField(mapping: 'test_photos', fileNameProperty: 'photoName', size: 'photoSize')]
+    private ?File $photoFile = null;
 
-    public function __construct()
-    {
-        $this->Capture = new ArrayCollection();
-    }
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photoName = null;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $photoSize = null;
+
+    // Getters and setters...
 
     public function getId(): ?int
     {
@@ -48,7 +49,6 @@ class Test
     public function setTitre(string $Titre): static
     {
         $this->Titre = $Titre;
-
         return $this;
     }
 
@@ -60,7 +60,6 @@ class Test
     public function setDescription(string $Description): static
     {
         $this->Description = $Description;
-
         return $this;
     }
 
@@ -72,37 +71,39 @@ class Test
     public function setIntervention(?Intervention $intervention): static
     {
         $this->intervention = $intervention;
-
         return $this;
     }
 
-    /**
-     * @return Collection<int, TestCapture>
-     */
-    public function getCapture(): Collection
+    public function getPhotoFile(): ?File
     {
-        return $this->Capture;
+        return $this->photoFile;
     }
 
-    public function addCapture(TestCapture $capture): static
+    public function setPhotoFile(?File $photoFile): static
     {
-        if (!$this->Capture->contains($capture)) {
-            $this->Capture->add($capture);
-            $capture->setTest($this);
-        }
-
+        $this->photoFile = $photoFile;
         return $this;
     }
 
-    public function removeCapture(TestCapture $capture): static
+    public function getPhotoName(): ?string
     {
-        if ($this->Capture->removeElement($capture)) {
-            // set the owning side to null (unless already changed)
-            if ($capture->getTest() === $this) {
-                $capture->setTest(null);
-            }
-        }
+        return $this->photoName;
+    }
 
+    public function setPhotoName(?string $photoName): static
+    {
+        $this->photoName = $photoName;
+        return $this;
+    }
+
+    public function getPhotoSize(): ?int
+    {
+        return $this->photoSize;
+    }
+
+    public function setPhotoSize(?int $photoSize): static
+    {
+        $this->photoSize = $photoSize;
         return $this;
     }
 }

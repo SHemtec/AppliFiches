@@ -57,18 +57,12 @@ class Intervention
     #[ORM\Column]
     private ?int $statut = null;
 
-    /**
-     * @var Collection<int, commandes>
-     */
-    #[ORM\OneToMany(targetEntity: commandes::class, mappedBy: 'intervention')]
-    private Collection $commandes;
 
     public function __construct()
     {
         $this->Test = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
         $this->statut = 1;
-        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int

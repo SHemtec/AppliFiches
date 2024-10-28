@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Client;
 use App\Entity\Intervention;
+use App\Entity\Test;
 use App\Form\InterventionType;
 use App\Repository\InterventionRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -53,6 +54,9 @@ final class InterventionController extends AbstractController
         $form = $this->createForm(InterventionType::class, $intervention);
         $form->handleRequest($request);
 
+        //recupere les tests de chaque interventions
+        $tests = $entityManager->getRepository(Test::class)->findBy(['intervention' => $intervention->getId()]);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
@@ -62,6 +66,7 @@ final class InterventionController extends AbstractController
 
         return $this->render('intervention/show.html.twig', [
             'intervention' => $intervention,
+            'tests' => $tests
         ]);
     }
 

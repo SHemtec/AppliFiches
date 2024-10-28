@@ -4,43 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="Add : stylisation des inter et ajout des recherches">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20241017213725.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/commande.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/import.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/print.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/CommandesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ImportController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Commandes.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/CommandesType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ImportType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/CommandesRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/commandes/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/commandes/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/commandes/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/commandes/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/commandes/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/commandes/show.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/import/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/intervention/print.html.twig" afterDir="false" />
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="Add : import des fiches FONCTIONNEL pour les format de 2014 et 2024 voir si d'autres formats existent">
+      <change afterPath="$PROJECT_DIR$/config/packages/vich_uploader.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20241023112850.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20241024113102.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20241028120938.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/flash-messages.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/test-671f833665465848155248.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/TestController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/TestType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test/_delete_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/SGMi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SGMi.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/InterventionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InterventionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Commandes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commandes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Intervention.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Intervention.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_partials/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/nav.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Test.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TestCapture.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/client/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/client/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/intervention/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/intervention/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/intervention/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,6 +202,8 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -233,7 +231,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -267,7 +265,9 @@
       <workItem from="1729335955740" duration="3540000" />
       <workItem from="1729339557896" duration="8426000" />
       <workItem from="1729595369611" duration="3153000" />
-      <workItem from="1729598538478" duration="4738000" />
+      <workItem from="1729598538478" duration="14212000" />
+      <workItem from="1729855789107" duration="67000" />
+      <workItem from="1729855862169" duration="3898000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -293,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729192951788</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add : import des fiches FONCTIONNEL pour les format de 2014 et 2024 voir si d'autres formats existent">
+      <option name="closed" value="true" />
+      <created>1729621770163</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729621770163</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +312,8 @@
     <MESSAGE value="Add : creation des entités" />
     <MESSAGE value="Add : creation des inter et des clients avec modales" />
     <MESSAGE value="Add : stylisation des inter et ajout des recherches" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add : stylisation des inter et ajout des recherches" />
+    <MESSAGE value="Add : import des fiches FONCTIONNEL pour les format de 2014 et 2024 voir si d'autres formats existent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add : import des fiches FONCTIONNEL pour les format de 2014 et 2024 voir si d'autres formats existent" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
