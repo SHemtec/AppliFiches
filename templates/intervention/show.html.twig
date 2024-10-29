@@ -60,27 +60,32 @@
             {% endif %}
         </div>
 
-        <h2>Tests</h2>
+        <article class="interTests">
+            <h2>Tests</h2>
 
-        <a id="createTestButton" data-intervention-id="{{ intervention.id }}" class="btn btn-primary">Ajouter un test</a>        {{ include('test/_delete_form.html.twig') }}
-        <section class="interTestsWrapper">
-            <!-- Existing content -->
-            <section class="testSection">
-                {% for test in intervention.test %}
-                    <div class="testContent">
-                        <h3>{{ test.Titre }}</h3>
-                        <span>{{ test.Description }}</span>
-                        {% if test.photoName != null %}
-                        <div class="testCaptures">
-                            <img src="{{ asset('uploads/' ~ test.photoName) }}" alt="Test Photo">
+            <div class="interTestsButtons">
+                <a id="createTestButton" data-intervention-id="{{ intervention.id }}" class="btn btn-primary">Ajouter un test</a>        {{ include('test/_delete_form.html.twig') }}
+
+            </div>
+            <section class="interTestsWrapper">
+                <!-- Existing content -->
+                <section class="testSection">
+                    {% for test in intervention.test %}
+                        <div class="testContent">
+                            <h3>{{ test.Titre }}</h3>
+                            <span>{{ test.Description }}</span>
+                            {% if test.photoName != null %}
+                                <div class="testCaptures">
+                                    <img src="{{ asset('uploads/' ~ test.photoName) }}" alt="Test Photo">
+                                </div>
+                            {% else %}
+                                <span> Ce test n'a pas de captures associées</span>
+                            {% endif %}
                         </div>
-                        {% else %}
-                        <span> Ce test n'a pas de captures enregistrées</span>
-                        {% endif %}
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </section>
             </section>
-        </section>
+        </article>
     </main>
 
     <div id="editInterventionModal" class="interventionModal">

@@ -15,19 +15,29 @@ class TestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Titre')
-            ->add('Description')
+            ->add('Titre', null, [
+                'attr' => ['class' => 'form-control'],
+                'row_attr' => ['class' => 'formGroup'],
+            ])
+            ->add('Description', null, [
+                'attr' => ['class' => 'form-control'],
+                'row_attr' => ['class' => 'formGroup'],
+            ])
             ->add('intervention', EntityType::class, [
                 'class' => Intervention::class,
                 'choice_label' => function (Intervention $intervention) {
                     return $intervention->getClient()->getName() . ' - ' . $intervention->getMateriel() . ' - ' . $intervention->getProbleme();
                 },
+                'attr' => ['class' => 'form-control'],
+                'row_attr' => ['class' => 'formGroup'],
             ])
             ->add('photoFile', VichFileType::class, [
                 'required' => false,
                 'allow_delete' => true,
                 'download_uri' => true,
                 'label' => 'Upload Photo',
+                'attr' => ['class' => 'form-control'],
+                'row_attr' => ['class' => 'formGroup'],
             ]);
     }
 

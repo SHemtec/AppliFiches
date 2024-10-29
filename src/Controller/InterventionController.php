@@ -6,6 +6,7 @@ use App\Entity\Client;
 use App\Entity\Intervention;
 use App\Entity\Test;
 use App\Form\InterventionType;
+use App\Form\TestType;
 use App\Repository\InterventionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -61,6 +62,19 @@ final class InterventionController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('app_intervention_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        $test = new Test();
+        $test->setIntervention($intervention);
+
+        $form = $this->createForm(TestType::class, $test);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($test);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_test_index');
         }
 
 

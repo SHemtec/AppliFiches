@@ -268,7 +268,6 @@ main .clientWrapper .client .clientInfo span {
     position: relative;
     margin-bottom: 1rem;
     max-height: 900px;
-    overflow-y: scroll;
     box-sizing: border-box;
 }
 
@@ -295,14 +294,14 @@ main .clientWrapper .client .clientInfo span {
 .clientShow .clientInter section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     gap: .8rem;
     width: 100%;
+    overflow-y: scroll;
 }
 
 .clientShow .clientInter section .intervention {
-    width: 100%;
+    width: 99%;
     border: 2px solid #ccc;
     border-radius: 10px;
 }
@@ -563,6 +562,24 @@ main .clientWrapper .client .clientInfo span {
     max-width: 60%;
 }
 
+.interventionShow .interTests {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.interventionShow .interTests .interTestsButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: .5rem;
+}
+
 .interventionShow .interTestsWrapper {
     display: flex;
     flex-direction: column;
@@ -638,6 +655,10 @@ main .clientWrapper .client .clientInfo span {
 }
 
 .interventionShow .interventionActions .btn-danger {
+    background: #dc3545;
+}
+
+.btn-danger {
     background: #dc3545;
 }
 
@@ -1011,15 +1032,53 @@ main .clientWrapper .client .clientInfo span {
     @page {
         size: A5;
         margin: 0;
+        padding: 0;
     }
 
     body {
         margin: 0;
         font-family: "Roboto", sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .cloture {
         display: none;
+    }
+
+    .interTests {
+        display: none !important;
+    }
+
+    .interTests, .interTestsButtons, .interTests h2 {
+        display: none;
+    }
+
+    article {
+        width: 100% !important;
+        padding: 0 2rem; !important;
+        height: 122vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: none !important;
+    }
+
+    .interInfoWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem !important;
+        position: fixed;
+        top: 18%;
+        left: 2rem;
+    }
+
+    .interventionInfo h2 {
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
     }
 
     nav, h1, .btn {
@@ -1027,7 +1086,10 @@ main .clientWrapper .client .clientInfo span {
     }
 
     .interShowStatus i {
-        font-size: 200%;
+        font-size: 350% !important;
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
     }
 }
 
@@ -1124,5 +1186,93 @@ main .clientWrapper .client .clientInfo span {
 /* Modal body */
 .interventionModalBody {
     padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+/* Form styles */
+.interventionModal .interventionModalContent .interventionModalBody form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form div {
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: .5rem;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup input, textarea {
+    padding: 12px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroupCheckbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroupCheckbox input {
+    padding: 12px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup label {
+    font-weight: 400;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form button {
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup select {
+    padding: 12px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    background-color: white;
+    color: black;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup select {
+    padding: 12px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
 }
 

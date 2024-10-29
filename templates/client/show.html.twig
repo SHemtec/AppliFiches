@@ -21,7 +21,7 @@
         <article class="clientInter">
             <h2>{{ interventions|length }} Interventions</h2>
             <a class="newInterButton" id="createInterventionButton" data-client-id="{{ client.id }}">+ Nouvelle intervention</a>
-            <section>
+            <section class="clientInterContent">
                 {% for inter in interventions %}
                     <a href="{{ path('app_intervention_show', {'id': inter.id}) }}" content="intervention" class="intervention" id="{{ inter.id }}">
                         <div class="interventionContent">

@@ -42,7 +42,7 @@ class Intervention
     /**
      * @var Collection<int, Test>
      */
-    #[ORM\OneToMany(targetEntity: Test::class, mappedBy: 'intervention')]
+    #[ORM\OneToMany(targetEntity: Test::class, mappedBy: 'intervention', cascade: ['persist', 'remove'])]
     private Collection $Test;
 
     #[ORM\Column]

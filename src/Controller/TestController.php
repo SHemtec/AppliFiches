@@ -39,7 +39,7 @@ final class TestController extends AbstractController
             $entityManager->persist($test);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_test_index');
+            return $this->redirectToRoute('app_intervention_show', ['id' => $interventionId], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('test/new.html.twig', [

@@ -23,6 +23,7 @@ class Test
     private ?string $Description = null;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?Intervention $intervention = null;
 
     #[Vich\UploadableField(mapping: 'test_photos', fileNameProperty: 'photoName', size: 'photoSize')]
