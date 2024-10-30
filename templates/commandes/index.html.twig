@@ -11,6 +11,7 @@
         </div>
 
         <article class="commandesWrapper">
+            <a id="createCommandeButton" style="width: 20%" class="btn btn-primary">Créer une commande</a>
             {% for commande in commandes %}
                 <a href="{{ path('app_commandes_show', {'id': commande.id}) }}" class="commande" id="{{ commande.id }}">
                     <div class="commandeContent">
@@ -43,9 +44,18 @@
             {% endfor %}
         </article>
     </main>
+
+    <div id="createCommandeModal" class="commandeModal">
+        <div class="commandeModalContent">
+            <span class="commandeModalClose">&times;</span>
+            <div id="createCommandeModalBody" class="commandeModalBody">
+                <!-- Form will be loaded here -->
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/commandes.js') }}"></script>
+    <script src="{{ asset('js/commande.js') }}"></script>
     <script src="{{ asset('js/recherche.js') }}"></script>
 {% endblock %}

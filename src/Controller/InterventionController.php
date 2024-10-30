@@ -74,7 +74,7 @@ final class InterventionController extends AbstractController
             $entityManager->persist($test);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_test_index');
+            return $this->redirectToRoute('app_intervention_show', ['id' => $intervention->getId()], Response::HTTP_SEE_OTHER);
         }
 
 

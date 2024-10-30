@@ -14,9 +14,20 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/commandes')]
 final class CommandesController extends AbstractController
 {
-    #[Route(name: 'app_commandes_index', methods: ['GET'])]
-    public function index(CommandesRepository $commandesRepository): Response
+    #[Route(name: 'app_commandes_index', methods: ['GET', 'POST'])]
+    public function index(CommandesRepository $commandesRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $commande = new Commandes();
+        $form = $this->createForm(CommandesType::class, $commande);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($commande);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_commandes_index', [], Response::HTTP_SEE_OTHER);
+        }
+
         return $this->render('commandes/index.html.twig', [
             'commandes' => $commandesRepository->findAll(),
         ]);

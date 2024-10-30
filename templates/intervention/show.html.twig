@@ -30,13 +30,13 @@
                     <span><strong>Nettoyage:</strong> {{ intervention.Nettoyage ? 'Oui' : 'Non' }}</span>
                     <span><strong>Créé le:</strong> {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
                     <span class="cloture"><strong>Clôturé le:</strong> {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</span>
-                   {#  {% if intervention.commandes|length > 0 %}
+                    {% if intervention.commande|length > 0 %}
                         <span><strong>Commandes:</strong>
-                        {% for commande in intervention.commandes %}
+                        {% for commande in intervention.commande %}
                             <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_commandes_show', {'id': commande.id}) }}">{{ commande.produits }}</a>
                         {% endfor %}
                     </span>
-                    {% endif %} #}
+                    {% endif %}
                 </section>
             </section>
         </article>

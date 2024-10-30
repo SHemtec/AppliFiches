@@ -14,24 +14,26 @@
             <div class="createClientButtonWrapper">
                 <a id="createClientButton">Ajouter un client</a>
             </div>
-            {% for client in clients %}
-            <a href="{{ path('app_client_show', {'id': client.id}) }}" content="client" class="client" id="{{ client.id }}">
-                <div class="clientContent">
-                    <section class="clientContentImg">
-                        <img src="" alt="">
-                    </section>
+            <section>
+                {% for client in clients %}
+                    <a href="{{ path('app_client_show', {'id': client.id}) }}" content="client" class="client" id="{{ client.id }}">
+                        <div class="clientContent">
+                            <section class="clientContentImg">
+                                <img src="" alt="">
+                            </section>
 
-                    <div class="clientInfo">
-                        <h2>{{ client.name}}</h2>
-                        {% if client.email %}
-                            <span>{{ client.email }}</span>
-                        {% else %}
-                            <span>{{ client.tel }}</span>
-                        {% endif %}
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
+                            <div class="clientInfo">
+                                <h2>{{ client.name}}</h2>
+                                {% if client.email %}
+                                    <span>{{ client.email }}</span>
+                                {% else %}
+                                    <span>{{ client.tel }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </section>
         </article>
     </main>
 

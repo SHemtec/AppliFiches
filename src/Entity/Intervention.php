@@ -45,6 +45,8 @@ class Intervention
     #[ORM\OneToMany(targetEntity: Test::class, mappedBy: 'intervention', cascade: ['persist', 'remove'])]
     private Collection $Test;
 
+
+
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
@@ -57,12 +59,19 @@ class Intervention
     #[ORM\Column]
     private ?int $statut = null;
 
+    /**
+     * @var Collection<int, Commandes>
+     */
+    #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'intervention', cascade: ['persist', 'remove'])]
+    private Collection $commande;
+
 
     public function __construct()
     {
         $this->Test = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
         $this->statut = 1;
+        $this->commande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -260,5 +269,13 @@ class Intervention
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Commandes>
+     */
+    public function getCommande(): Collection
+    {
+        return $this->commande;
     }
 }

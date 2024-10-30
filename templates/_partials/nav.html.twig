@@ -1,8 +1,35 @@
 <nav>
     <ul>
-        <li><a href="{{ path('app_main') }}">Accueil</a></li>
-        <li><a href="{{ path('app_client_index') }}">Clients</a></li>
-        <li><a href="{{ path('app_intervention_index') }}">Interventions</a></li>
-        <li><a href="{{ path('app_commandes_index') }}">Commandes</a></li>
+        <li><a href="{{ path('app_main') }}" class="{{ app.request.attributes.get('_route') == 'app_main' ? 'active' : '' }}">Accueil</a></li>
+        <li><a href="{{ path('app_client_index') }}" class="{{ app.request.attributes.get('_route') == 'app_client_index' ? 'active' : '' }}">Clients</a></li>
+        <li><a href="{{ path('app_intervention_index') }}" class="{{ app.request.attributes.get('_route') == 'app_intervention_index' ? 'active' : '' }}">Interventions</a></li>
+        <li><a href="{{ path('app_commandes_index') }}" class="{{ app.request.attributes.get('_route') == 'app_commandes_index' ? 'active' : '' }}">Commandes</a></li>
     </ul>
+    {% if app.user %}
+        <div class="user-menu">
+            <div class="user-circle" id="userCircle">{{ app.user.username[:2]|upper }}</div>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            </div>
+        </div>
+    {% endif %}
 </nav>
+
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userCircle = document.getElementById('userCircle');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+
+            userCircle.addEventListener('click', function() {
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!userCircle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        });
+    </script>
+{% endblock %}

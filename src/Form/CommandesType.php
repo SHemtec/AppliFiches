@@ -14,7 +14,10 @@ class CommandesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Produits')
+            ->add('Produits', null, [
+                'attr' => ['class' => 'form-control'],
+                'row_attr' => ['class' => 'formGroup'],
+            ])
             ->add('intervention', EntityType::class, [
                 'class' => Intervention::class,
                 'choice_label' => function (Intervention $intervention) {
@@ -22,6 +25,8 @@ class CommandesType extends AbstractType
                 },
                 'placeholder' => 'Aucune intervention',
                 'required' => false,
+                'attr' => ['class' => 'form-control'],
+                'row_attr' => ['class' => 'formGroup'],
             ])
         ;
     }

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset("css/style.css") }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,9 @@
 
     </head>
     <body>
+    {% if app.request.attributes.get('_route') != 'app_login' %}
         {% include '_partials/nav.html.twig' %}
+    {% endif %}
         {% block body %}{% endblock %}
 
         {% block javascripts %}

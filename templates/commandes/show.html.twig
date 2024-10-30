@@ -30,7 +30,7 @@
             {{ include('commandes/_delete_form.html.twig') }}
 
             {% if not commande.status %}
-                <form action="{{ path('app_commandes_complete', {'id': commande.id}) }}" method="post">
+                <form action="{{ path('app_commandes_validate', {'id': commande.id}) }}" method="post">
                     <button type="submit" class="btn btn-success">Marquer comme complétée</button>
                 </form>
             {% endif %}

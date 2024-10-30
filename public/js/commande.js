@@ -25,5 +25,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const createCommandeModal = document.getElementById('createCommandeModal');
+    const createCommandeSpan = document.getElementsByClassName('commandeModalClose')[0];
+    console.log('commande.js loaded');
 
+    document.getElementById('createCommandeButton').addEventListener('click', function () {
+        const clientId = this.getAttribute('data-client-id');
+        console.log('createCommandeButton clicked');
+        fetch(`/commandes/new`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('createCommandeModalBody').innerHTML = html;
+                createCommandeModal.style.display = 'block';
+            });
+    });
+
+    createCommandeSpan.onclick = function () {
+        createCommandeModal.style.display = 'none';
+    }
+
+    window.onclick = function (event) {
+        if (event.target == createCommandeModal) {
+            createCommandeModal.style.display = 'none';
+        }
+    }
+});
 
