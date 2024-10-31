@@ -34,6 +34,10 @@ class CommandesType extends AbstractType
                         ->orderBy('c.name', 'ASC');
                 },
             ])
+            ->add('fournisseur', null, [
+                'attr' => ['class' => 'form-control'],
+                'row_attr' => ['class' => 'formGroup'],
+            ])
         ;
     }
 

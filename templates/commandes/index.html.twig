@@ -17,10 +17,17 @@
                     <div class="commandeContent">
                         <div class="commandeInfo">
                             <h2>{{ commande.Produits }}</h2>
+                            <span>Fournisseur : {{ commande.fournisseur }}</span>
                             <span class="date">Ajouté le : {{ commande.createdAt ? commande.createdAt|date('d/m/Y H:i') : '' }}</span>
                             <span class="date">Commandé le : {{ commande.orderedAt ? commande.orderedAt|date('d/m/Y H:i') : '' }}</span>
                             <span class="status {{ commande.status ? 'status-commande' : 'status-non-commande' }}">
                                 {{ commande.status ? 'Commandé' : 'Pas commandé' }}
+                            </span>
+                            <span class="status {{ commande.deliveryStatus ? 'status-livree' : 'status-non-livree' }}">
+                                {{ commande.deliveryStatus ? 'Livré' : 'Pas livré' }}
+                            </span>
+                            <span class="status {{ commande.clientCalledStatus ? 'status-client-appele' : 'status-client-non-appele' }}">
+                                {{ commande.clientCalledStatus ? 'Client prévenu' : 'Client non prévenu' }}
                             </span>
 
                             {% if commande.intervention %}
@@ -31,11 +38,25 @@
                                 </div>
                             {% endif %}
 
-                            {% if commande.status == false %}
-                                <form action="{{ path('app_commandes_validate', {'id': commande.id}) }}" method="post">
-                                    <button type="submit" class="btn btn-primary">Valider la commande</button>
-                                </form>
-                            {% endif %}
+                            <section class="commandeButtonWrapper">
+                                {% if not commande.status %}
+                                    <form action="{{ path('app_commandes_validate', {'id': commande.id}) }}" method="post">
+                                        <button type="submit" class="btn btn-primary">Marquer comme Commandée</button>
+                                    </form>
+                                {% endif %}
+
+                                {% if commande.deliveryStatus == false %}
+                                    <form action="{{ path('app_commandes_validate_delivery', {'id': commande.id}) }}" method="post">
+                                        <button type="submit" class="btn btn-primary">Valider la livraison</button>
+                                    </form>
+                                {% endif %}
+
+                                {% if commande.clientCalledStatus == false %}
+                                    <form action="{{ path('app_commandes_validate_call', {'id': commande.id}) }}" method="post">
+                                        <button type="submit" class="btn btn-primary">Valider l'appel</button>
+                                    </form>
+                                {% endif %}
+                            </section>
                         </div>
                     </div>
                 </a>

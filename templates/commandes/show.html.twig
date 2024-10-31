@@ -20,20 +20,34 @@
                 <span><strong>Produits:</strong> {{ commande.Produits }}</span>
                 <span><strong>Créé le:</strong> {{ commande.createdAt|date('d/m/Y H:i') }}</span>
                 <span><strong>Commandé le:</strong> {{ commande.orderedAt ? commande.orderedAt|date('d/m/Y H:i') : 'Non commandé' }}</span>
-                <span><strong>Intervention:</strong> <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_intervention_show', {'id': commande.intervention.id}) }}">{{ commande.intervention.Materiel }}</a></span>
+                {% if commande.intervention %} <span><strong>Intervention:</strong> <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_intervention_show', {'id': commande.intervention.id}) }}">{{ commande.intervention.Materiel }}</a></span> {% endif %}
             </section>
         </article>
 
         <div class="commandeActions">
             <a href="{{ path('app_commandes_index') }}" class="btn btn-secondary">Retour à la liste</a>
-            <a id="editCommandeBtn" data-commande-id="{{ commande.id }}" class="btn btn-primary">Modifier</a>
+            {# <a id="editCommandeBtn" data-commande-id="{{ commande.id }}" class="btn btn-primary">Modifier</a> #}
             {{ include('commandes/_delete_form.html.twig') }}
 
-            {% if not commande.status %}
-                <form action="{{ path('app_commandes_validate', {'id': commande.id}) }}" method="post">
-                    <button type="submit" class="btn btn-success">Marquer comme complétée</button>
-                </form>
-            {% endif %}
+            <section class="commandeButtonWrapper">
+                {% if not commande.status %}
+                    <form action="{{ path('app_commandes_validate', {'id': commande.id}) }}" method="post">
+                        <button type="submit" class="btn btn-success">Marquer comme commandé</button>
+                    </form>
+                {% endif %}
+
+                {% if commande.deliveryStatus == false %}
+                    <form action="{{ path('app_commandes_validate_delivery', {'id': commande.id}) }}" method="post">
+                        <button type="submit" class="btn btn-success">Valider la livraison</button>
+                    </form>
+                {% endif %}
+
+                {% if commande.clientCalledStatus == false %}
+                    <form action="{{ path('app_commandes_validate_call', {'id': commande.id}) }}" method="post">
+                        <button type="submit" class="btn btn-success">Valider l'appel</button>
+                    </form>
+                {% endif %}
+            </section>
         </div>
     </main>
 

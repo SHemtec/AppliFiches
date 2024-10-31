@@ -29,10 +29,21 @@ class Commandes
     #[ORM\ManyToOne(inversedBy: 'commande')]
     private ?Intervention $intervention = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $fournisseur = null;
+
+    #[ORM\Column]
+    private ?bool $deliveryStatus = null;
+
+    #[ORM\Column]
+    private ?bool $clientCalledStatus = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->status = false;
+        $this->deliveryStatus = false;
+        $this->clientCalledStatus = false;
     }
 
     public function getId(): ?int
@@ -96,6 +107,42 @@ class Commandes
     public function setIntervention(?Intervention $intervention): static
     {
         $this->intervention = $intervention;
+
+        return $this;
+    }
+
+    public function getFournisseur(): ?string
+    {
+        return $this->fournisseur;
+    }
+
+    public function setFournisseur(?string $fournisseur): static
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    public function isDeliveryStatus(): ?bool
+    {
+        return $this->deliveryStatus;
+    }
+
+    public function setDeliveryStatus(bool $deliveryStatus): static
+    {
+        $this->deliveryStatus = $deliveryStatus;
+
+        return $this;
+    }
+
+    public function isClientCalledStatus(): ?bool
+    {
+        return $this->clientCalledStatus;
+    }
+
+    public function setClientCalledStatus(bool $clientCalledStatus): static
+    {
+        $this->clientCalledStatus = $clientCalledStatus;
 
         return $this;
     }

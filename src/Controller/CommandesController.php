@@ -101,4 +101,26 @@ final class CommandesController extends AbstractController
 
         return $this->redirectToRoute('app_commandes_index');
     }
+
+    #[Route('/validate_delivery/{id}', name: 'app_commandes_validate_delivery', methods: ['POST'])]
+    public function validateDelivery(Commandes $commande, EntityManagerInterface $entityManager): Response
+    {
+        $commande->setDeliveryStatus(true);
+
+        $entityManager->persist($commande);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_commandes_index');
+    }
+
+    #[Route('/validate_call/{id}', name: 'app_commandes_validate_call', methods: ['POST'])]
+    public function validateCall(Commandes $commande, EntityManagerInterface $entityManager): Response
+    {
+        $commande->setClientCalledStatus(true);
+
+        $entityManager->persist($commande);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_commandes_index');
+    }
 }

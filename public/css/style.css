@@ -989,8 +989,38 @@ main .clientWrapper .client .clientInfo span {
     color: green;
 }
 
+.status-livree {
+    color: green;
+}
+
+.status-client-appele {
+    color: green;
+}
+
 .status-non-commande {
     color: orange;
+}
+
+.status-non-livree {
+    color: orange;
+}
+
+.status-client-non-appele {
+    color: orange;
+}
+
+.commandeButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.commandesPage .commandeButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
 }
 
 .commandeShow {
