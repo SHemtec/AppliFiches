@@ -37,13 +37,15 @@ class MainController extends AbstractController
             $flashCounter = 1;
 
             foreach ($files as $file) {
+                $fileName = $file->getClientOriginalName(); // Get the original file name
                 $spreadsheet = IOFactory::load($file->getPathname());
                 $client = null;
 
                 foreach ($spreadsheet->getAllSheets() as $worksheet) {
                     // Determine the format based on the value of A17 and B17
                     $isFormat2 = $worksheet->getCell('A17')->getValue() === 'Intervention';
-                    $isFormat3 = empty($worksheet->getCell('B11')->getValue()) && empty($worksheet->getCell('F4')->getValue());                    $isFormat4 = $worksheet->getCell('A8')->getValue() === 'Problème';
+                    $isFormat3 = empty($worksheet->getCell('B11')->getValue()) && empty($worksheet->getCell('F4')->getValue());
+                    $isFormat4 = $worksheet->getCell('A8')->getValue() === 'Problème';
 
                     if ($isFormat3) {
                         // Skip sheets with format 3
@@ -115,7 +117,7 @@ class MainController extends AbstractController
                         }
 
                         if ($createdAt === false) {
-                            $this->addFlash('error', $flashCounter . '. Format de date invalide : ' . $data['Date']);
+                            $this->addFlash('error', $flashCounter . '. Format de date invalide dans le fichier ' . $fileName . ' : ' . $data['Date']);
                             continue;
                         }
 
@@ -168,7 +170,7 @@ class MainController extends AbstractController
                             $this->addFlash('success', $flashCounter . '. FORMAT: '. $format .' Ligne importée avec succès.');
                         }
                     } else {
-                        $this->addFlash('error', $flashCounter . '. FORMAT: '. $format .' Données manquantes ou incorrectes dans le fichier XLSX : ' . json_encode($data));
+                        $this->addFlash('error', $flashCounter . '. FORMAT: '. $format .' Données manquantes ou incorrectes dans le fichier ' . $fileName . ' : ' . json_encode($data));
                     }
 
                     $flashCounter++;
