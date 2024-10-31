@@ -43,7 +43,7 @@ class MainController extends AbstractController
                 foreach ($spreadsheet->getAllSheets() as $worksheet) {
                     // Determine the format based on the value of A17 and B17
                     $isFormat2 = $worksheet->getCell('A17')->getValue() === 'Intervention';
-                    $isFormat3 = empty($worksheet->getCell('B7')->getValue());
+                    $isFormat3 = empty($worksheet->getCell('B11')->getValue());
 
                     if ($isFormat3) {
                         // Skip sheets with format 3

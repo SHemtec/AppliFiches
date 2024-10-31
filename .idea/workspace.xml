@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="Add : creation du web.config pour le deploiement sur windows server (iis)">
-      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="Add : ajout du htaccess">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +249,7 @@
       <workItem from="1730121394271" duration="17875000" />
       <workItem from="1730248081596" duration="123000" />
       <workItem from="1730279371902" duration="2369000" />
-      <workItem from="1730283694590" duration="2852000" />
+      <workItem from="1730283694590" duration="3654000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -324,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730292230514</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add : ajout du htaccess">
+      <option name="closed" value="true" />
+      <created>1730372322977</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730372322977</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +348,8 @@
     <MESSAGE value="Add : style ok remaniement de l'import ok et refonte de la fiche d'impression ok&#10;&#10;reste a voir les commandes refaire la relation et tester" />
     <MESSAGE value="Add : commandes ok remaniement du css&#10;&#10;ALL GOOD" />
     <MESSAGE value="Add : creation du web.config pour le deploiement sur windows server (iis)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add : creation du web.config pour le deploiement sur windows server (iis)" />
+    <MESSAGE value="Add : ajout du htaccess" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add : ajout du htaccess" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
