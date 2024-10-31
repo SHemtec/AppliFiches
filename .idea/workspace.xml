@@ -249,7 +249,7 @@
       <workItem from="1730121394271" duration="17875000" />
       <workItem from="1730248081596" duration="123000" />
       <workItem from="1730279371902" duration="2369000" />
-      <workItem from="1730283694590" duration="4560000" />
+      <workItem from="1730283694590" duration="4803000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -339,7 +339,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730376075053</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Edit : modif du controlleur pour l'import">
+      <option name="closed" value="true" />
+      <created>1730377449812</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1730377449812</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
