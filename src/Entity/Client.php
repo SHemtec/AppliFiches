@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
+#[ORM\Table(name: 'client')]
+#[ORM\UniqueConstraint(name: 'unique_client_name', columns: ['name'])]
 class Client
 {
     #[ORM\Id]
@@ -15,7 +17,7 @@ class Client
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]

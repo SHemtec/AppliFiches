@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Doctrine\ORM\EntityRepository;
 
 class CommandesType extends AbstractType
 {
@@ -27,6 +28,11 @@ class CommandesType extends AbstractType
                 'required' => false,
                 'attr' => ['class' => 'form-control'],
                 'row_attr' => ['class' => 'formGroup'],
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('i')
+                        ->join('i.client', 'c')
+                        ->orderBy('c.name', 'ASC');
+                },
             ])
         ;
     }

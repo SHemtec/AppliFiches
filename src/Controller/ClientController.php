@@ -24,6 +24,13 @@ final class ClientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Check if a client with the same name already exists
+            $existingClient = $clientRepository->findOneBy(['name' => $client->getName()]);
+            if ($existingClient) {
+                $this->addFlash('error','Un client a ce nom existe déja.');
+                return $this->redirectToRoute('app_client_index');
+            }
+
             $entityManager->persist($client);
             $entityManager->flush();
 
@@ -38,13 +45,20 @@ final class ClientController extends AbstractController
     }
 
     #[Route('/new', name: 'app_client_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, ClientRepository $clientRepository, EntityManagerInterface $entityManager): Response
     {
         $client = new Client();
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Check if a client with the same name already exists
+            $existingClient = $clientRepository->findOneBy(['name' => $client->getName()]);
+            if ($existingClient) {
+                $this->addFlash('error','Un client a ce nom existe déja.');
+                return $this->redirectToRoute('app_client_new');
+            }
+
             $entityManager->persist($client);
             $entityManager->flush();
 
