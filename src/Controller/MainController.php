@@ -44,6 +44,7 @@ class MainController extends AbstractController
                     // Determine the format based on the value of A17 and B17
                     $isFormat2 = $worksheet->getCell('A17')->getValue() === 'Intervention';
                     $isFormat3 = empty($worksheet->getCell('B11')->getValue());
+                    $isFormat4 = $worksheet->getCell('A8')->getValue() === 'Problème';
 
                     if ($isFormat3) {
                         // Skip sheets with format 3
@@ -61,6 +62,21 @@ class MainController extends AbstractController
                             'Problème' => $worksheet->getCell('B13')->getValue(),
                             'Intervention' => $worksheet->getCell('B17')->getValue() ?? '',
                             'PRIX' => $worksheet->getCell('F19')->getValue() ?? 0, // Valeur par défaut si null
+                        ];
+                        $format = "2";
+
+                    } elseif ($isFormat4) {
+                        // Handle second format
+                        $data = [
+                            'Nom' => $worksheet->getCell('B1')->getValue(),
+                            'Tel' => $worksheet->getCell('B3')->getValue(),
+                            'Email' => $worksheet->getCell('B4')->getValue() ?? '', // Valeur par défaut si null
+                            'Materiel' => $worksheet->getCell('B6')->getValue(),
+                            'Mdp session' => $worksheet->getCell('B5')->getValue() ?? '', // Valeur par défaut si null
+                            'Date' => $worksheet->getCell('F4')->getValue(),
+                            'Problème' => $worksheet->getCell('B8')->getValue(),
+                            'Intervention' => $worksheet->getCell('A13')->getValue() ?? '',
+                            'PRIX' => $worksheet->getCell('F20')->getValue() ?? 0, // Valeur par défaut si null
                         ];
                         $format = "2";
                     } else {

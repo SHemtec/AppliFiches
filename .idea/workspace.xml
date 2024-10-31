@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="Add : ajout du htaccess">
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="Edit : modif du controlleur pour l'import">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
     </list>
@@ -249,7 +249,7 @@
       <workItem from="1730121394271" duration="17875000" />
       <workItem from="1730248081596" duration="123000" />
       <workItem from="1730279371902" duration="2369000" />
-      <workItem from="1730283694590" duration="3654000" />
+      <workItem from="1730283694590" duration="4560000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -331,7 +331,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730372322977</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Edit : modif du controlleur pour l'import">
+      <option name="closed" value="true" />
+      <created>1730376075053</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1730376075053</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,7 +357,8 @@
     <MESSAGE value="Add : commandes ok remaniement du css&#10;&#10;ALL GOOD" />
     <MESSAGE value="Add : creation du web.config pour le deploiement sur windows server (iis)" />
     <MESSAGE value="Add : ajout du htaccess" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add : ajout du htaccess" />
+    <MESSAGE value="Edit : modif du controlleur pour l'import" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit : modif du controlleur pour l'import" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
