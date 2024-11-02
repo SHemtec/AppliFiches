@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="Edit : modif du controlleur&#10;de commandes">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20241031162100.php" afterDir="false" />
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="Add : status de livraison et d'appel client, fournisseur sur les commandes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CommandesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommandesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Commandes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commandes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CommandesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CommandesType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/commandes/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commandes/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/commandes/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commandes/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_partials/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/nav.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +251,9 @@
       <workItem from="1730248081596" duration="123000" />
       <workItem from="1730279371902" duration="2369000" />
       <workItem from="1730283694590" duration="9593000" />
-      <workItem from="1730392732031" duration="775000" />
+      <workItem from="1730392732031" duration="4199000" />
+      <workItem from="1730542487402" duration="2143000" />
+      <workItem from="1730544639970" duration="36000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -379,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730390268285</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add : status de livraison et d'appel client, fournisseur sur les commandes">
+      <option name="closed" value="true" />
+      <created>1730393628850</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1730393628850</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,7 +403,8 @@
     <MESSAGE value="Add : ajout du htaccess" />
     <MESSAGE value="Edit : modif du controlleur pour l'import" />
     <MESSAGE value="Edit : modif du controlleur&#10;de commandes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit : modif du controlleur&#10;de commandes" />
+    <MESSAGE value="Add : status de livraison et d'appel client, fournisseur sur les commandes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add : status de livraison et d'appel client, fournisseur sur les commandes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,5 +1,8 @@
 <nav>
-    <ul>
+    <div class="burger-menu" id="burgerMenu">
+        <i class="bi bi-list"></i>
+    </div>
+    <ul id="navLinks">
         <li><a href="{{ path('app_main') }}" class="{{ app.request.attributes.get('_route') == 'app_main' ? 'active' : '' }}">Accueil</a></li>
         <li><a href="{{ path('app_client_index') }}" class="{{ app.request.attributes.get('_route') == 'app_client_index' ? 'active' : '' }}">Clients</a></li>
         <li><a href="{{ path('app_intervention_index') }}" class="{{ app.request.attributes.get('_route') == 'app_intervention_index' ? 'active' : '' }}">Interventions</a></li>
@@ -28,6 +31,23 @@
             document.addEventListener('click', function(event) {
                 if (!userCircle.contains(event.target) && !dropdownMenu.contains(event.target)) {
                     dropdownMenu.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burgerMenu = document.getElementById('burgerMenu');
+            const navLinks = document.getElementById('navLinks');
+
+            burgerMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!burgerMenu.contains(event.target) && !navLinks.contains(event.target)) {
+                    navLinks.classList.remove('show');
                 }
             });
         });
