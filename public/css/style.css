@@ -1608,11 +1608,6 @@ main .clientWrapper .client .clientInfo span {
         width: 60%;
     }
 
-    .interventionWrapper {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
     .intervention {
         width: 85% !important;
     }
