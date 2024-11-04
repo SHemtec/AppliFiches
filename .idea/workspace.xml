@@ -251,7 +251,7 @@
       <workItem from="1730283694590" duration="9593000" />
       <workItem from="1730392732031" duration="4199000" />
       <workItem from="1730542487402" duration="2143000" />
-      <workItem from="1730544639970" duration="786000" />
+      <workItem from="1730544639970" duration="808000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -397,7 +397,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730721920607</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add : meta vp pour le responsive">
+      <option name="closed" value="true" />
+      <created>1730722951193</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1730722951193</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
