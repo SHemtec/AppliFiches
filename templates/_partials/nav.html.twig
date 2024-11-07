@@ -1,6 +1,6 @@
 <nav>
     <div class="burger-menu" id="burgerMenu">
-        <i class="bi bi-list"></i>
+        <i class="bi bi-list" style="cursor: pointer"></i>
     </div>
     <ul id="navLinks">
         <li><a href="{{ path('app_main') }}" class="{{ app.request.attributes.get('_route') == 'app_main' ? 'active' : '' }}">Accueil</a></li>
