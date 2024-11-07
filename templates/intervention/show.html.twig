@@ -3,7 +3,51 @@
 {% block title %}Intervention{% endblock %}
 
 {% block body %}
-    <main class="interventionShow">
+    <aside class="sidebar close">
+        <div class="logo-details">
+            <i class=''></i>
+            <span class="logo_name">{{ intervention.client.name }}</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="{{ path('app_client_show', {'id': intervention.client.id}) }}">
+                    <i class='bi bi-person' ></i>
+                    <span class="link_name">Client</span>
+                </a>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class="bi bi-files"></i>
+                        <span class="link_name">Interventions</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Interventions</a></li>
+                    {% for inter in intervention.client.intervention %}
+                    <li><a class="" href="{{ path('app_intervention_show', {'id': inter.id}) }}">{{ inter.probleme }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class="bi bi-truck"></i>
+                        <span class="link_name">Commandes</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Commandes</a></li>
+                    {% for cmd in intervention.commande %}
+                    <li><a href="{{ path('app_commandes_show', {'id': cmd.id}) }}">{{ cmd.produits }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </aside>
+    <main class="home-section interventionShow">
         <h1>Intervention</h1>
 
         <article class="interventionInfo">
@@ -110,4 +154,19 @@
 {% block javascripts %}
     <script src="{{ asset('js/intervention.js') }}"></script>
     <script src="{{ asset('js/print.js') }}"></script>
+    <script>
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e)=>{
+                let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bi-list");
+        console.log(sidebarBtn);
+        sidebarBtn.addEventListener("click", ()=>{
+            sidebar.classList.toggle("close");
+        });
+    </script>
 {% endblock %}
