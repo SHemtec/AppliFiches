@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : ajout de la sidebar pour les interventions">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="EDIT : Placement des elements de la sidebar">
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_partials/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/nav.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/intervention/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +252,7 @@
       <workItem from="1730392732031" duration="4199000" />
       <workItem from="1730542487402" duration="2143000" />
       <workItem from="1730544639970" duration="2192000" />
-      <workItem from="1730931550281" duration="5018000" />
+      <workItem from="1730931550281" duration="5274000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -433,7 +430,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730982458938</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="EDIT : Placement des elements de la sidebar">
+      <option name="closed" value="true" />
+      <created>1730983065683</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1730983065683</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,7 +464,8 @@
     <MESSAGE value="Add : langue du base" />
     <MESSAGE value="EDIT : affichage des interventions en mobile" />
     <MESSAGE value="ADD : ajout de la sidebar pour les interventions" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD : ajout de la sidebar pour les interventions" />
+    <MESSAGE value="EDIT : Placement des elements de la sidebar" />
+    <option name="LAST_COMMIT_MESSAGE" value="EDIT : Placement des elements de la sidebar" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

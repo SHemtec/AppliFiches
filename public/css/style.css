@@ -1860,7 +1860,7 @@ main .clientWrapper .client .clientInfo span {
     width: 78px;
 }
 .sidebar .logo-details{
-    height: 60px;
+    height: 100px;
     width: 100%;
     display: flex;
     align-items: center;
