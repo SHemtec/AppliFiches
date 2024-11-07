@@ -1567,6 +1567,39 @@ main .clientWrapper .client .clientInfo span {
     background-color: #f1f1f1;
 }
 
+/* style pour l'affichage de la date dans le sinter*/
+.dateIndicator {
+    text-align: center;
+    margin: 20px 0;
+    color: #ccc;
+}
+
+.dateLine {
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+    background: #fff;
+}
+
+.dateLine::before,
+.dateLine::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+}
+
+.dateLine::before {
+    left: -100%;
+    margin-right: 10px;
+}
+
+.dateLine::after {
+    right: -100%;
+    margin-left: 10px;
+}
 @media (max-width: 768px) {
     .burger-menu {
         display: flex;

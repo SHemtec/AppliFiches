@@ -10,8 +10,16 @@
             <input type="text" id="searchBar" class="searchBar" placeholder="Rechercher des interventions...">
         </div>
 
+        {% set currentDate = null %}
         <article class="interventionWrapper">
             {% for intervention in interventions %}
+                {% set interventionDate = intervention.createdAt|date('d/m/Y') %}
+                {% if currentDate != interventionDate %}
+                    {% set currentDate = interventionDate %}
+                    <div class="dateIndicator">
+                        <span class="dateLine">{{ currentDate }}</span>
+                    </div>
+                {% endif %}
                 <a href="{{ path('app_intervention_show', {'id': intervention.id}) }}" content="intervention" class="intervention" id="{{ intervention.id }}">
                     <div class="interventionContent">
                         <section class="interventionContentImg">
