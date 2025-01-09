@@ -38,7 +38,7 @@ final class InterventionController extends AbstractController
             $entityManager->persist($intervention);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_intervention_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_intervention_show', ['id' => $intervention->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('intervention/new.html.twig', [
@@ -58,10 +58,21 @@ final class InterventionController extends AbstractController
         //recupere les tests de chaque interventions
         $tests = $entityManager->getRepository(Test::class)->findBy(['intervention' => $intervention->getId()]);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                if ($request->request->get('close')) {
+                    $intervention->setStatut(2); // Assuming 2 is the status for closed
+                    $intervention->setFinishedAt(new \DateTimeImmutable());
+                    $this->addFlash('success', 'Intervention cloturée avec succés.');
+                } else {
+                    $this->addFlash('success', 'Impossible de traiter la modification.');
+                }
+                $entityManager->flush();
 
-            return $this->redirectToRoute('app_intervention_index', [], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('app_intervention_show', ['id' => $intervention->getId()], Response::HTTP_SEE_OTHER);
+            } else {
+                $this->addFlash('error', 'Le formulaire n\'est pas valide.');
+            }
         }
 
         $test = new Test();
@@ -90,11 +101,7 @@ final class InterventionController extends AbstractController
         $form = $this->createForm(InterventionType::class, $intervention);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_intervention_index', [], Response::HTTP_SEE_OTHER);
-        }
+        // Le traitement du formulaire est déplacé dans le intervention_show de ce meme controlleur
 
         return $this->render('intervention/edit.html.twig', [
             'intervention' => $intervention,
@@ -126,7 +133,7 @@ final class InterventionController extends AbstractController
             $entityManager->persist($intervention);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_client_show', ['id' => $client->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_intervention_show', ['id' => $intervention->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('intervention/_form.html.twig', [
@@ -145,6 +152,7 @@ final class InterventionController extends AbstractController
 
         $intervention->setStatut(2); // Set status to "Terminé"
         $intervention->setFinishedAt(new \DateTimeImmutable()); // Set finishedAt to current date
+        $this->addFlash('success', 'Intervention cloturée avec succés.');
 
         $entityManager->flush();
 
@@ -164,6 +172,8 @@ final class InterventionController extends AbstractController
 
         $intervention->setStatut(1); // Set status to "Terminé"
         $intervention->setUpdatedAt(new \DateTimeImmutable()); // Set finishedAt to current date
+        $this->addFlash('success', 'Intervention réouverte avec succés.');
+
 
         $entityManager->flush();
 

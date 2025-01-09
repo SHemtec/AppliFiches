@@ -33,8 +33,11 @@ final class ClientController extends AbstractController
 
             $entityManager->persist($client);
             $entityManager->flush();
+            $this->addFlash('success', 'Client créé.');
 
-            return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_client_show', ["id" => $client->getId()], Response::HTTP_SEE_OTHER);
+        } else {
+            $this->addFlash('error', 'Erreur lors de la création du client.');
         }
 
         return $this->render('client/index.html.twig', [
@@ -89,8 +92,11 @@ final class ClientController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($intervention);
             $entityManager->flush();
+            $this->addFlash('success', 'Intervention créée.');
 
-            return $this->redirectToRoute('app_client_show', ['id' => $client->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_intervention_show', ['id' => $intervention->getId()], Response::HTTP_SEE_OTHER);
+        } else {
+            $this->addFlash('error', 'Erreur lors de la création de l\'intervention.');
         }
 
         $form = $this->createForm(ClientType::class, $client);

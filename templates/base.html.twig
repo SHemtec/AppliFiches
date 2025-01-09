@@ -25,5 +25,58 @@
 
         {% block javascripts %}
         {% endblock %}
+
+    <div class="flash-messages">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-message">
+                    <span class="flash-message-{{ type }}">
+                        {% if type == 'success' %}
+                            <i class="bi bi-check-circle"></i>
+                        {% elseif type == 'danger' %}
+                            <i class="bi bi-x-circle"></i>
+                        {% elseif type == 'warning' %}
+                            <i class="bi bi-exclamation-circle"></i>
+                        {% elseif type == 'info' %}
+                            <i class="bi bi-info"></i>
+                        {% endif %}
+                    </span>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(message) {
+                setTimeout(function() {
+                    message.classList.add('slide-out');
+                    setTimeout(function() {
+                        message.remove();
+                    }, 500);
+                }, 3500);
+
+                message.addEventListener('click', function() {
+                    message.classList.add('slide-out');
+                    setTimeout(function() {
+                        message.remove();
+                    }, 500);
+                });
+
+                const closeButton = message.querySelector('.flash-close');
+                if (closeButton) {
+                    closeButton.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                        message.classList.add('slide-out');
+                        setTimeout(function() {
+                            message.remove();
+                        }, 500);
+                    });
+                }
+            });
+        });
+    </script>
     </body>
 </html>

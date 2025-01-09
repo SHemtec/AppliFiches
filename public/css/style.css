@@ -7,6 +7,91 @@ body {
     font-style: normal;
 }
 
+.flash-messages {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 500px;
+}
+
+.flash-message {
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-radius: 50px;
+    color: #fff;
+    opacity: 0.9;
+    position: relative;
+    animation: slide-in 0.5s forwards;
+    background: #1d1b31;
+}
+
+.flash-message span {
+    margin-right: 10px;
+    padding: 1px 10px;
+    border-radius: 50px;
+
+}
+
+.flash-message-success {
+    background-color: #28a745;
+}
+
+.flash-message-error {
+    background-color: #dc3545;
+}
+
+.flash-message-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.flash-message-info {
+    background-color: #17a2b8;
+}
+
+.flash-close {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 0.9;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateX(0);
+        opacity: 0.9;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.flash-message.slide-out {
+    animation: slide-out 0.5s forwards;
+}
+
 nav {
     z-index: 10;
     display: flex;
@@ -507,7 +592,6 @@ main .clientWrapper .client .clientInfo span {
     margin-top: 1rem;
     border: none;
     border-radius: 5px;
-    background: #007bff;
     color: white;
     cursor: pointer;
 }
@@ -694,7 +778,7 @@ main .clientWrapper .client .clientInfo span {
     background: #007bff;
 }
 
-.interventionShow .interventionActions .btn-secondary {
+.btn-secondary {
     background: #6c757d;
 }
 
@@ -702,8 +786,12 @@ main .clientWrapper .client .clientInfo span {
     background: #007bff;
 }
 
-.interventionShow .interventionActions .btn-success {
-    background: #28a745;
+.btn-success {
+    background: #28a745 !important ;
+}
+
+.btn-alert {
+    background: #ffc107 !important;
 }
 
 .interventionShow .interventionActions .btn-danger {
@@ -1883,7 +1971,7 @@ main .clientWrapper .client .clientInfo span {
     position: fixed;
     bottom: 0;
     left: 0;
-    height: 93.5%;
+    height: 95%;
     width: 260px;
     background: #007bff;
     z-index: 5;
@@ -2090,7 +2178,6 @@ main .clientWrapper .client .clientInfo span {
 }
 .home-section{
     position: relative;
-    background: #E4E9F7;
     height: 100vh;
     left: 260px;
     width: calc(100% - 260px);
