@@ -12,14 +12,12 @@ body {
     bottom: 20px;
     right: 20px;
     z-index: 1000;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .flash-message {
+    display: inline-block;
     padding: 5px 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     margin-bottom: 10px;
     border-radius: 50px;
     color: #fff;
@@ -27,6 +25,8 @@ body {
     position: relative;
     animation: slide-in 0.5s forwards;
     background: #1d1b31;
+    float: right;
+    clear: both;
 }
 
 .flash-message span {

@@ -24,6 +24,7 @@ final class CommandesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($commande);
             $entityManager->flush();
+            $this->addFlash('success', 'Commande créée.');
 
             return $this->redirectToRoute('app_commandes_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -98,6 +99,7 @@ final class CommandesController extends AbstractController
 
         $entityManager->persist($commande);
         $entityManager->flush();
+        $this->addFlash('success', 'Commande validée.');
 
         return $this->redirectToRoute('app_commandes_index');
     }
@@ -109,6 +111,7 @@ final class CommandesController extends AbstractController
 
         $entityManager->persist($commande);
         $entityManager->flush();
+        $this->addFlash('success', 'Livraison validée.');
 
         return $this->redirectToRoute('app_commandes_index');
     }
@@ -120,6 +123,7 @@ final class CommandesController extends AbstractController
 
         $entityManager->persist($commande);
         $entityManager->flush();
+        $this->addFlash('success', 'Appel client validé.');
 
         return $this->redirectToRoute('app_commandes_index');
     }

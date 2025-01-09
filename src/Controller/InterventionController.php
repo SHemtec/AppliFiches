@@ -44,6 +44,7 @@ final class InterventionController extends AbstractController
         return $this->render('intervention/new.html.twig', [
             'intervention' => $intervention,
             'form' => $form,
+            'context' => 'add',
         ]);
     }
 
@@ -106,6 +107,7 @@ final class InterventionController extends AbstractController
         return $this->render('intervention/edit.html.twig', [
             'intervention' => $intervention,
             'form' => $form,
+            'context' => 'edit',
         ]);
     }
 
@@ -115,6 +117,7 @@ final class InterventionController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$intervention->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($intervention);
             $entityManager->flush();
+            $this->addFlash('success', 'Intervention supprimée avec succés.');
         }
 
         return $this->redirectToRoute('app_intervention_index', [], Response::HTTP_SEE_OTHER);
@@ -138,6 +141,7 @@ final class InterventionController extends AbstractController
 
         return $this->render('intervention/_form.html.twig', [
             'form' => $form->createView(),
+            'context' => 'add',
         ]);
     }
 

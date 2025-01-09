@@ -49,7 +49,7 @@ class MainController extends AbstractController
 
                     if ($isFormat3) {
                         // Skip sheets with format 3
-                        $this->addFlash('info', $flashCounter . '. FORMAT: 3 Feuille ignorée.');
+                        $this->addFlash('info', 'Feuille ignorée. (format 3)');
                         continue;
                     } elseif ($isFormat2) {
                         // Handle second format
@@ -117,7 +117,7 @@ class MainController extends AbstractController
                         }
 
                         if ($createdAt === false) {
-                            $this->addFlash('error', $flashCounter . '. Format de date invalide dans le fichier ' . $fileName . ' : ' . $data['Date']);
+                            $this->addFlash('error',' Format de date invalide dans le fichier ' . $fileName . ' : ' . $data['Date']);
                             continue;
                         }
 
@@ -126,7 +126,7 @@ class MainController extends AbstractController
                             $existingClient = $clientRepository->findOneBy(['name' => $data['Nom']]);
                             if ($existingClient) {
                                 $client = $existingClient;
-                                $this->addFlash('warning', $flashCounter . '. Client déjà existant : ' . $data['Nom']);
+                                $this->addFlash('warning', 'Client déjà existant : ' . $data['Nom']);
                             } else {
                                 $client = new Client();
                                 $client->setName($data['Nom']);
@@ -152,7 +152,7 @@ class MainController extends AbstractController
                             $existingIntervention->setOperations($data['Intervention'] ?? $existingIntervention->getOperations());
                             $existingIntervention->setCout($data['PRIX']);
                             $entityManager->flush();
-                            $this->addFlash('success', $flashCounter . '. FORMAT: '. $format .' Intervention mise à jour avec succès.');
+                            $this->addFlash('success', 'Intervention mise à jour avec succès. (format '. $format .')');
                         } else {
                             // Create new intervention
                             $intervention = new Intervention();
@@ -167,10 +167,10 @@ class MainController extends AbstractController
                             $intervention->setFinishedAt($createdAt); // Closure date = creation date
 
                             $entityManager->persist($intervention);
-                            $this->addFlash('success', $flashCounter . '. FORMAT: '. $format .' Ligne importée avec succès.');
+                            $this->addFlash('success', 'Ligne importée avec succès. (format '. $format .')');
                         }
                     } else {
-                        $this->addFlash('error', $flashCounter . '. FORMAT: '. $format .' Données manquantes ou incorrectes dans le fichier ' . $fileName . ' : ' . json_encode($data));
+                        $this->addFlash('error', 'Données manquantes ou incorrectes dans le fichier ' . $fileName . ' : ' . json_encode($data) . ' (format '. $format .')');
                     }
 
                     $flashCounter++;

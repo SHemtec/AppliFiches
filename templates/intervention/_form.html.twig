@@ -1,5 +1,9 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn btn-alert">{{ button_label|default('Valider') }}</button>
-    <button type="submit" class="btn btn-success" name="close" value="1">Valider et Clôturer</button>
+{% if context == 'add' %}
+    <button type="submit" class="btn btn-primary">Valider</button>
+{% else %}
+    <button type="submit" class="btn btn-primary">Modifier</button>
+    <button type="submit" class="btn btn-success" name="close">Modifier et Clôturer</button>
+{% endif %}
 {{ form_end(form) }}

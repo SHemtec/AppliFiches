@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="EDIT : Placement des elements de la sidebar ( decalage des inter dans le dropdown si trop long )">
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : modif du style des flash, ajout de retour d'info, modifs qol">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CommandesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommandesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/InterventionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InterventionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/intervention/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/intervention/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/intervention/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/intervention/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +263,7 @@
       <workItem from="1730544639970" duration="2192000" />
       <workItem from="1730931550281" duration="6303000" />
       <workItem from="1736441099499" duration="31000" />
-      <workItem from="1736453528176" duration="6229000" />
+      <workItem from="1736453528176" duration="8800000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -465,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730983407057</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="ADD : modif du style des flash, ajout de retour d'info, modifs qol">
+      <option name="closed" value="true" />
+      <created>1736460087759</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1736460087759</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,7 +512,8 @@
     <MESSAGE value="ADD : ajout de la sidebar pour les interventions" />
     <MESSAGE value="EDIT : Placement des elements de la sidebar" />
     <MESSAGE value="EDIT : Placement des elements de la sidebar ( decalage des inter dans le dropdown si trop long )" />
-    <option name="LAST_COMMIT_MESSAGE" value="EDIT : Placement des elements de la sidebar ( decalage des inter dans le dropdown si trop long )" />
+    <MESSAGE value="ADD : modif du style des flash, ajout de retour d'info, modifs qol" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD : modif du style des flash, ajout de retour d'info, modifs qol" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
