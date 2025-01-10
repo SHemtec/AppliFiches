@@ -61,17 +61,17 @@ final class InterventionController extends AbstractController
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                if ($request->request->get('close')) {
+                if ($request->request->has('close')) {
                     $intervention->setStatut(2); // Assuming 2 is the status for closed
                     $intervention->setFinishedAt(new \DateTimeImmutable());
                     $this->addFlash('success', 'Intervention cloturée avec succés.');
                 } else {
-                    $this->addFlash('success', 'Impossible de traiter la modification.');
+                    $this->addFlash('success', 'Intervention modifiée avec succés.');
                 }
                 $entityManager->flush();
 
                 return $this->redirectToRoute('app_intervention_show', ['id' => $intervention->getId()], Response::HTTP_SEE_OTHER);
-            } else {
+            } elseif ($form->isSubmitted()) {
                 $this->addFlash('error', 'Le formulaire n\'est pas valide.');
             }
         }
@@ -85,6 +85,7 @@ final class InterventionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($test);
             $entityManager->flush();
+            $this->addFlash('success', 'Test ajouté avec succés.');
 
             return $this->redirectToRoute('app_intervention_show', ['id' => $intervention->getId()], Response::HTTP_SEE_OTHER);
         }

@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : modif du style des flash, ajout de retour d'info, modifs qol">
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : ajout de nouveaux flash et autres modifs QOL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CommandesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommandesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/InterventionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InterventionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/intervention/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/intervention/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +259,8 @@
       <workItem from="1730544639970" duration="2192000" />
       <workItem from="1730931550281" duration="6303000" />
       <workItem from="1736441099499" duration="31000" />
-      <workItem from="1736453528176" duration="8800000" />
+      <workItem from="1736453528176" duration="8873000" />
+      <workItem from="1736499950070" duration="2733000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -473,7 +470,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736460087759</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="ADD : ajout de nouveaux flash et autres modifs QOL">
+      <option name="closed" value="true" />
+      <created>1736462728173</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1736462728173</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +518,8 @@
     <MESSAGE value="EDIT : Placement des elements de la sidebar" />
     <MESSAGE value="EDIT : Placement des elements de la sidebar ( decalage des inter dans le dropdown si trop long )" />
     <MESSAGE value="ADD : modif du style des flash, ajout de retour d'info, modifs qol" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD : modif du style des flash, ajout de retour d'info, modifs qol" />
+    <MESSAGE value="ADD : ajout de nouveaux flash et autres modifs QOL" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD : ajout de nouveaux flash et autres modifs QOL" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
