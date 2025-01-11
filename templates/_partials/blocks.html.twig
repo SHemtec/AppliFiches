@@ -3,87 +3,125 @@
 {% block title %}New Interface{% endblock %}
 
 {% block body %}
-    <main class="accueilContainer">
+    <main>
 
-        <div class="acceuilStats">
-            <article class="accueilStatCard">
-                <section class="iconContainer">
-                    <div class="iconCircle">
-                        <i class="bi bi-person-fill"></i>
-                    </div>
-                </section>
-
-                <section class="statContent">
-                    <h3>764</h3>
-                    <h4>Clients enregistrés</h4>
-                </section>
-            </article>
-
-            <article class="accueilStatCard">
-                <section class="iconContainer">
-                    <div class="iconCircle">
-                        <i class="bi bi-journal-text"></i>
-                    </div>
-                </section>
-
-                <section class="statContent">
-                    <h3>1133</h3>
-                    <h4>Interventions</h4>
-                </section>
-            </article>
-
-            <article class="accueilStatCard">
-                <section class="iconContainer">
-                    <div class="iconCircle">
-                        <i class="bi bi-journal-check"></i>
-                    </div>
-                </section>
-
-                <section class="statContent">
-                    <h3>1127</h3>
-                    <h4>Interventions Clôturées</h4>
-                </section>
-            </article>
-        </div>
-
-        <div class="importBtnWrapper">
-            <button type="button" class="btnImport" id="importButton">
-                Importer des fiches
-            </button>
+        <div class="searchBarWrapper">
+            <input type="text" id="searchBar" class="searchBar" placeholder="Rechercher des clients...">
         </div>
 
         <div class="backgroundScrollerWrapper">
             <div class="scrollerWrapper">
                 <section class="scrollerHeader">
-                    <h2 class="scrollerHeaderText">Interventions en cours</h2>
+                    <h2 class="scrollerHeaderText">clients enregistrés</h2>
                     <i class="bi bi-arrow-down acc absolute scrollerHeaderArrow"></i>
-                    <i class="bi bi-journal-text scrollerHeaderIcon"></i>
+                    <a style="cursor: pointer" class="bi bi-person-plus scrollerHeaderIcon"></a>
                 </section>
 
                 <section class="scrollerContent">
-
-                    <article class="scrollerCard">
+                    <a href="" content="intervention" class="scrollerCard" id="">
                         <section class="scrollerCardInnerCircle">
                             <span>IE</span>
                         </section>
 
                         <section class="scrollerCardContent">
                             <div>
-                                <h3>Client Name</h3>
-                                <h4>Matériel</h4>
-                                <p>Problème</p>
-                                <span>Ajouté le : 12/12/2021 12:00</span>
+                                <h3>IENCLI IENCLI</h3>
+                                <h4>06 06 06 06 06</h4>
                             </div>
 
                             <span class="interStatut">
-                                <i class="bi bi-check-circle" title="Terminé"></i>
+                                <i class="bi bi-chevron-right"></i>
                             </span>
                         </section>
-                    </article>
+                    </a>
+
+                    <a href="" content="intervention" class="scrollerCard" id="">
+                        <section class="scrollerCardInnerCircle">
+                            <span>IE</span>
+                        </section>
+
+                        <section class="scrollerCardContent">
+                            <div>
+                                <h3>IENCLI IENCLI</h3>
+                                <h4>06 06 06 06 06</h4>
+                            </div>
+
+                            <span class="interStatut">
+                                <i class="bi bi-chevron-right"></i>
+                            </span>
+                        </section>
+                    </a>
+
+                    <a href="" content="intervention" class="scrollerCard" id="">
+                        <section class="scrollerCardInnerCircle">
+                            <span>IE</span>
+                        </section>
+
+                        <section class="scrollerCardContent">
+                            <div>
+                                <h3>IENCLI IENCLI</h3>
+                                <h4>06 06 06 06 06</h4>
+                            </div>
+
+                            <span class="interStatut">
+                                <i class="bi bi-chevron-right"></i>
+                            </span>
+                        </section>
+                    </a>
+
+                    <a href="" content="intervention" class="scrollerCard" id="">
+                        <section class="scrollerCardInnerCircle">
+                            <span>IE</span>
+                        </section>
+
+                        <section class="scrollerCardContent">
+                            <div>
+                                <h3>IENCLI IENCLI</h3>
+                                <h4>06 06 06 06 06</h4>
+                            </div>
+
+                            <span class="interStatut">
+                                <i class="bi bi-chevron-right"></i>
+                            </span>
+                        </section>
+                    </a>
+
+                    <a href="" content="intervention" class="scrollerCard" id="">
+                        <section class="scrollerCardInnerCircle">
+                            <span>IE</span>
+                        </section>
+
+                        <section class="scrollerCardContent">
+                            <div>
+                                <h3>IENCLI IENCLI</h3>
+                                <h4>06 06 06 06 06</h4>
+                            </div>
+
+                            <span class="interStatut">
+                                <i class="bi bi-chevron-right"></i>
+                            </span>
+                        </section>
+                    </a>
+
+                    <a href="" content="intervention" class="scrollerCard" id="">
+                        <section class="scrollerCardInnerCircle">
+                            <span>IE</span>
+                        </section>
+
+                        <section class="scrollerCardContent">
+                            <div>
+                                <h3>IENCLI IENCLI</h3>
+                                <h4>06 06 06 06 06</h4>
+                            </div>
+
+                            <span class="interStatut">
+                                <i class="bi bi-chevron-right"></i>
+                            </span>
+                        </section>
+                    </a>
 
                 </section>
             </div>
         </div>
-
     </main>
 {% endblock %}

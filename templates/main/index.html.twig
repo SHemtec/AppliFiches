@@ -3,73 +3,109 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <main class="accueil">
-        <button type="button" class="btn btn-primary" id="importButton">
-            Importer des fiches
-        </button>
 
-        <div class="statsWrapper">
-            <div class="stat">
-                <h3>Nombre de clients</h3>
-                <p>{{ clientCount }}</p>
-            </div>
-            <div class="stat">
-                <h3>Nombre d'interventions</h3>
-                <p>{{ interventionCount }}</p>
-            </div>
-            <div class="stat">
-                <h3>Interventions clôturées</h3>
-                <p>{{ closedInterventionCount }}</p>
+    <main class="accueilContainer">
+
+        <div class="acceuilStats">
+            <article class="accueilStatCard">
+                <section class="iconContainer">
+                    <div class="iconCircle">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                </section>
+
+                <section class="statContent">
+                    <h3>{{ clientCount }}</h3>
+                    <h4>Clients enregistrés</h4>
+                </section>
+            </article>
+
+            <article class="accueilStatCard">
+                <section class="iconContainer">
+                    <div class="iconCircle">
+                        <i class="bi bi-journal-text"></i>
+                    </div>
+                </section>
+
+                <section class="statContent">
+                    <h3>{{ interventionCount }}</h3>
+                    <h4>Interventions</h4>
+                </section>
+            </article>
+
+            <article class="accueilStatCard">
+                <section class="iconContainer">
+                    <div class="iconCircle">
+                        <i class="bi bi-journal-check"></i>
+                    </div>
+                </section>
+
+                <section class="statContent">
+                    <h3>{{ closedInterventionCount }}</h3>
+                    <h4>Interventions Clôturées</h4>
+                </section>
+            </article>
+        </div>
+
+        <div class="importBtnWrapper">
+            <button type="button" class="btnImport" id="importButton">
+                Importer des fiches
+            </button>
+        </div>
+
+        <div class="backgroundScrollerWrapper">
+            <div class="scrollerWrapper">
+                <section class="scrollerHeader">
+                    <h2 class="scrollerHeaderText">Interventions en cours</h2>
+                    <i class="bi bi-arrow-down acc absolute scrollerHeaderArrow"></i>
+                    <i class="bi bi-journal-text scrollerHeaderIcon"></i>
+                </section>
+
+                <section class="scrollerContent">
+                    {% if ongoingInterventions is empty %}
+                        <p class="noInterventions">Aucune intervention en cours</p>
+                    {% else %}
+                        {% for intervention in ongoingInterventions %}
+                            <a href="{{ path('app_intervention_show', {'id': intervention.id}) }}" content="intervention" class="scrollerCard" id="{{ intervention.id }}">
+                                <section class="scrollerCardInnerCircle">
+                                    <span>{{ intervention.client.name|slice(0, 2) }}</span>
+                                </section>
+
+                                <section class="scrollerCardContent">
+                                    <div>
+                                        <h3>{{ intervention.client.name }}</h3>
+                                        <h4>{{ intervention.Materiel }}</h4>
+                                        <p>{{ intervention.Probleme }}</p>
+                                        <span>Ajouté le : {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
+                                    </div>
+
+                                    <span class="interStatut">
+                                        {% if intervention.statut == 0 %}
+                                            <i class="bi bi-x-circle" title="Non traité"></i>
+                                            {% elseif intervention.statut == 1 %}
+                                            <i class="bi bi-clock" title="En cours"></i>
+                                            {% elseif intervention.statut == 2 %}
+                                            <i class="bi bi-check-circle" title="Terminé"></i>
+                                        {% endif %}
+                                    </span>
+                                </section>
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+
+                </section>
             </div>
         </div>
 
-        <h1>Interventions en cours</h1>
-
-        <article class="interventionWrapper">
-            {% if ongoingInterventions is empty %}
-                <p class="noInterventions">Aucune intervention en cours</p>
-            {% else %}
-                {% for intervention in ongoingInterventions %}
-                    <a href="{{ path('app_intervention_show', {'id': intervention.id}) }}" content="intervention" class="intervention" id="{{ intervention.id }}">
-                        <div class="interventionContent">
-                            <section class="interventionContentImg">
-                                <img src="" alt="">
-                            </section>
-
-                            <div class="interventionInfo">
-                                <h2>{{ intervention.client.name }}</h2>
-                                <h3>{{ intervention.Materiel }}</h3>
-                                <span>{{ intervention.Probleme }}</span>
-                                <span style="color: orange">Ajouté le : {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
-                                {% if intervention.statut == 2 %}
-                                    <span style="color: green">Clôturé le : {{ intervention.finishedAt|date('d/m/Y H:i') }}</span>
-                                {% endif %}
-
-                                <span class="interStatut">
-                                    {% if intervention.statut == 0 %}
-                                        <i class="bi bi-x-circle" style="color: red" title="Non traité"></i>
-                                    {% elseif intervention.statut == 1 %}
-                                        <i class="bi bi-clock" style="color: orange" title="En cours"></i>
-                                    {% elseif intervention.statut == 2 %}
-                                        <i class="bi bi-check-circle" style="color: green" title="Terminé"></i>
-                                    {% endif %}
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
-            {% endif %}
-        </article>
+        <div id="importModal" class="importModal">
+            <div class="importModalContent">
+                <span class="importModalClose">&times;</span>
+                <div id="importModalBody" class="importModalBody">
+                    <!-- Form will be loaded here -->
+                </div>
+            </div>
+        </div>
     </main>
-
-    <div id="importModal" class="importModal">
-        <div class="importModalContent">
-            <span class="importModalClose">&times;</span>
-            <div id="importModalBody" class="importModalBody">
-                <!-- Form will be loaded here -->
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block javascripts %}

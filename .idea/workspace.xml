@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="EDIT : réactivation des animations des flash">
-      <change afterPath="$PROJECT_DIR$/public/css/styleNew.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/variables.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/_partials/blocks.html.twig" afterDir="false" />
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : debut de la refonte de l'interface 15%">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_partials/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/nav.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/styleNew.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styleNew.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/variables.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_partials/blocks.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/blocks.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/client/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +266,7 @@
       <workItem from="1736502914292" duration="87000" />
       <workItem from="1736503025739" duration="4000" />
       <workItem from="1736503209168" duration="57000" />
-      <workItem from="1736596389930" duration="11165000" />
+      <workItem from="1736596389930" duration="15505000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -501,7 +500,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736503251318</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="ADD : debut de la refonte de l'interface 15%">
+      <option name="closed" value="true" />
+      <created>1736608534330</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1736608534330</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,7 +551,8 @@
     <MESSAGE value="ADD : ajout de nouveaux flash et autres modifs QOL" />
     <MESSAGE value="ADD : ajout d'un nouveau flash, reparation de la modif/cloture des inter et correction du css des flash" />
     <MESSAGE value="EDIT : réactivation des animations des flash" />
-    <option name="LAST_COMMIT_MESSAGE" value="EDIT : réactivation des animations des flash" />
+    <MESSAGE value="ADD : debut de la refonte de l'interface 15%" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD : debut de la refonte de l'interface 15%" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -3,38 +3,46 @@
 {% block title %}Client index{% endblock %}
 
 {% block body %}
-    <main class="clientPage">
-        <h1>Clients enregistrés</h1>
+    <main>
 
         <div class="searchBarWrapper">
-            <input style="width: 85%" type="text" id="searchBar" class="searchBar" placeholder="Rechercher des clients...">
+            <input type="text" id="searchBar" class="searchBar" placeholder="Rechercher des clients...">
         </div>
 
-        <article class="clientWrapper">
-            <div class="createClientButtonWrapper">
-                <a id="createClientButton">Ajouter un client</a>
-            </div>
-            <section>
-                {% for client in clients %}
-                    <a href="{{ path('app_client_show', {'id': client.id}) }}" content="client" class="client" id="{{ client.id }}">
-                        <div class="clientContent">
-                            <section class="clientContentImg">
-                                <img src="" alt="">
+        <div class="backgroundScrollerWrapper">
+            <div class="scrollerWrapper">
+                <section class="scrollerHeader">
+                    <h2 class="scrollerHeaderText">clients enregistrés</h2>
+                    <i class="bi bi-arrow-down acc absolute scrollerHeaderArrow"></i>
+                    <a style="cursor: pointer" id="createClientButton" title="Ajouter un client" class="bi bi-person-plus scrollerHeaderIcon"></a>
+                </section>
+
+                <section class="scrollerContent">
+                    {% for client in clients %}
+                        <a href="{{ path('app_client_show', {'id': client.id}) }}" content="client" class="scrollerCard client" id="{{ client.id }}">
+                            <section class="scrollerCardInnerCircle">
+                                <span>{{ client.name|slice(0, 2) }}</span>
                             </section>
 
-                            <div class="clientInfo">
-                                <h2>{{ client.name}}</h2>
-                                {% if client.email %}
-                                    <span>{{ client.email }}</span>
-                                {% else %}
-                                    <span>{{ client.tel }}</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
-            </section>
-        </article>
+                            <section class="scrollerCardContent">
+                                <div>
+                                    <h3>{{ client.name}}</h3>
+                                    {% if client.email %}
+                                        <h4>{{ client.email }}</h4>
+                                    {% else %}
+                                        <h4>{{ client.tel }}</h4>
+                                    {% endif %}
+                                </div>
+
+                                <span class="interStatut">
+                                    <i class="bi bi-chevron-right"></i>
+                                </span>
+                            </section>
+                        </a>
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
     </main>
 
     <div id="clientModal" class="clientModal">

@@ -7,84 +7,7 @@ body {
     font-style: normal;
 }
 
-.flash-messages {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    max-width: 600px;
-}
 
-.flash-message {
-    display: inline-block;
-    padding: 5px 15px;
-    margin-bottom: 10px;
-    border-radius: 50px;
-    color: #fff;
-    opacity: 0.9;
-    position: relative;
-    animation: slide-in 0.5s forwards;
-    background: #1d1b31;
-    float: right;
-    clear: both;
-    box-sizing: border-box;
-}
-
-.flash-message .iconContainer {
-    margin-right: 10px;
-    padding: 1px 6px 1px 10px;
-    border-radius: 50px;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.flash-message-success {
-    background-color: #28a745;
-}
-
-.flash-message-error {
-    background-color: #dc3545;
-}
-
-.flash-message-warning {
-    background-color: #ffc107;
-    color: #212529;
-}
-
-.flash-message-info {
-    background-color: #17a2b8;
-}
-
-@keyframes slide-in {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 0.9;
-    }
-}
-
-@keyframes slide-out {
-    from {
-        transform: translateX(0);
-        opacity: 0.9;
-    }
-    to {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-}
-
-.flash-message.slide-out {
-    animation: slide-out 0.5s forwards;
-}
-
-main {
-    width: 100%;
-    padding-top: 8rem !important;
-}
 
 .clientPage {
     padding: 4rem 0;
@@ -176,90 +99,7 @@ main .clientWrapper .client .clientInfo span {
     color: #818181;
 }
 
-.clientModal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
 
-.clientModal .clientModalContent {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 10px 20px;
-    border: 1px solid #888;
-    width: 40%;
-    border-radius: 10px;
-}
-
-.clientModal .clientModalContent .clientModalBody {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 0;
-}
-
-.clientModal .clientModalContent .clientModalClose {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-}
-
-.clientModal .clientModalContent .clientModalBody .clientCreateForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 1rem;
-}
-
-.clientModal .clientModalContent .clientModalBody .clientCreateForm .formGroup {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    width: 100%;
-}
-
-.clientModal .clientModalContent .clientModalBody .clientCreateForm .formGroup input {
-    padding: 12px 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.clientModal .clientModalContent .clientModalBody .clientCreateForm .formGroup label {
-    font-weight: 400;
-    margin: 0 0 5px 5px;
-}
-
-.clientModal .clientModalContent .clientModalBody .clientCreateForm button {
-    padding: 10px 20px;
-    margin-top: 1rem;
-    border: none;
-    border-radius: 5px;
-    background: #007bff;
-    color: white;
-    cursor: pointer;
-}
-
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 .clientShow {
     display: flex;
@@ -821,21 +661,6 @@ main .clientWrapper .client .clientInfo span {
     max-width: 80%;
 }
 
-.searchBarWrapper {
-    margin-bottom: 20px;
-    text-align: center;
-    width: 80%;
-}
-
-.searchBar {
-    width: 60%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
 .noInterventions {
     font-size: 1.5rem;
     color: #6c757d;
@@ -953,18 +778,6 @@ main .clientWrapper .client .clientInfo span {
     flex-direction: column;
     align-items: center;
     width: 100%;
-}
-
-.searchBarWrapper {
-    width: 80%;
-    margin-bottom: 20px;
-}
-
-.searchBar {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 .commandesWrapper {
@@ -1203,56 +1016,6 @@ main .clientWrapper .client .clientInfo span {
         bottom: 2rem;
         right: 2rem;
     }
-}
-
-/* Import Modal container */
-.importModal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-/* Import Modal content */
-.importModalContent {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 10px 20px;
-    border: 1px solid #888;
-    width: 40%;
-    border-radius: 10px;
-}
-
-/* Close button */
-.importModalClose {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-}
-
-.importModalClose:hover,
-.importModalClose:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Modal body */
-.importModalBody {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 0;
 }
 
 /* General modal styles */
