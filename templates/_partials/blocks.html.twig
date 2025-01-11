@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Interface{% endblock %}
+
+{% block body %}
+    <main class="accueilContainer">
+
+        <div class="acceuilStats">
+            <article class="accueilStatCard">
+                <section class="iconContainer">
+                    <div class="iconCircle">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                </section>
+
+                <section class="statContent">
+                    <h3>764</h3>
+                    <h4>Clients enregistrés</h4>
+                </section>
+            </article>
+
+            <article class="accueilStatCard">
+                <section class="iconContainer">
+                    <div class="iconCircle">
+                        <i class="bi bi-journal-text"></i>
+                    </div>
+                </section>
+
+                <section class="statContent">
+                    <h3>1133</h3>
+                    <h4>Interventions</h4>
+                </section>
+            </article>
+
+            <article class="accueilStatCard">
+                <section class="iconContainer">
+                    <div class="iconCircle">
+                        <i class="bi bi-journal-check"></i>
+                    </div>
+                </section>
+
+                <section class="statContent">
+                    <h3>1127</h3>
+                    <h4>Interventions Clôturées</h4>
+                </section>
+            </article>
+        </div>
+
+        <div class="importBtnWrapper">
+            <button type="button" class="btnImport" id="importButton">
+                Importer des fiches
+            </button>
+        </div>
+
+        <div class="backgroundScrollerWrapper">
+            <div class="scrollerWrapper">
+                <section class="scrollerHeader">
+                    <h2 class="scrollerHeaderText">Interventions en cours</h2>
+                    <i class="bi bi-arrow-down acc absolute scrollerHeaderArrow"></i>
+                    <i class="bi bi-journal-text scrollerHeaderIcon"></i>
+                </section>
+
+                <section class="scrollerContent">
+
+                    <article class="scrollerCard">
+                        <section class="scrollerCardInnerCircle">
+                            <span>IE</span>
+                        </section>
+
+                        <section class="scrollerCardContent">
+                            <div>
+                                <h3>Client Name</h3>
+                                <h4>Matériel</h4>
+                                <p>Problème</p>
+                                <span>Ajouté le : 12/12/2021 12:00</span>
+                            </div>
+
+                            <span class="interStatut">
+                                <i class="bi bi-check-circle" title="Terminé"></i>
+                            </span>
+                        </section>
+                    </article>
+
+                </section>
+            </div>
+        </div>
+
+    </main>
+{% endblock %}

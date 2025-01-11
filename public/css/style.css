@@ -81,53 +81,6 @@ body {
     animation: slide-out 0.5s forwards;
 }
 
-nav {
-    z-index: 10;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: .4rem 2rem;
-    background: #007bff;
-    color: white;
-    width: 100%;
-    font-size: 1.3em;
-    position: fixed;
-}
-
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    gap: 2rem;
-    font-weight: 400;
-}
-
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: .3s;
-}
-
-nav a:hover {
-    color: #c2c2c2;
-}
-
-nav a.active {
-    position: relative;
-}
-
-nav a.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -5px; /* Adjust the spacing from the text */
-    height: 3px; /* Adjust the height of the underline */
-    background: linear-gradient(to right, white, #c2c2c2);
-    border-radius: 5px; /* Rounded corners */
-}
-
 main {
     width: 100%;
     padding-top: 8rem !important;
@@ -1590,58 +1543,6 @@ main .clientWrapper .client .clientInfo span {
     color: red;
     margin-bottom: 1rem;
     font-size: 0.875rem;
-}
-
-/* Style for the user menu */
-.user-menu {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    float: right;
-    margin-right: 20px;
-    width: 100%;
-    height: 50px;
-}
-
-/* Style for the user circle */
-.user-circle {
-    width: 50px;
-    height: 50px;
-    background-color: #ffffff;
-    color: #007bff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-weight: bold;
-    position: absolute;
-    right: 2rem;
-}
-
-/* Style for the dropdown menu */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 65px;
-    right: 0;
-    background-color: white;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.dropdown-menu a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-menu a:hover {
-    background-color: #f1f1f1;
 }
 
 /* style pour l'affichage de la date dans le sinter*/

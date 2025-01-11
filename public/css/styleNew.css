@@ -1,0 +1,386 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: var(--background);
+    color: var(--accWhite);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav {
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: .4rem 2rem;
+    background: var(--background);
+    color: var(--acc);
+    width: 100%;
+    font-size: 1.3em;
+    position: fixed;
+    border-bottom: 5px solid var(--acc);
+    border-image: var(--gradientRight) 1;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+    font-weight: 400;
+}
+
+nav a {
+    color: var(--acc);
+    text-decoration: none;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #c2c2c2;
+}
+
+nav a.active {
+    position: relative;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px; /* Adjust the spacing from the text */
+    height: 3px; /* Adjust the height of the underline */
+    background: linear-gradient(to right, white, #c2c2c2);
+    border-radius: 5px; /* Rounded corners */
+}
+
+.user-menu {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    float: right;
+    margin-right: 20px;
+    width: 100%;
+    height: 50px;
+}
+
+.user-circle {
+    width: 50px;
+    height: 50px;
+    background-color: var(--acc);
+    color: var(--background);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    right: 2rem;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 65px;
+    right: 2%;
+    background-color: var(--background);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    color: var(--acc);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+/* --------------------------------------  Composants ------------------------------------ */
+
+/* ------------------------ scroller ------------------------*/
+.backgroundScrollerWrapper {
+    background: var(--gradientBottom);
+    padding: 5px;
+    border-radius: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 2rem 0;
+}
+
+.scrollerWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 20px;
+    background: var(--background);
+    box-sizing: border-box;
+}
+
+.scrollerHeader {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: var(--acc);
+    border-radius: 17px 17px 0 0;
+    color: var(--background);
+    padding: 1rem 0;
+    gap: 15%;
+}
+
+.scrollerHeader::after {
+    content: '';
+    position: absolute;
+    background: var(--background);
+    width: 250px;
+    height: 250px;
+    top: 30%;
+    border-radius: 50%;
+}
+
+.scrollerHeader i {
+    font-size: 2.4em;
+    z-index: 2;
+}
+
+.scrollerHeader .scrollerHeaderArrow {
+    top: 50%;
+}
+
+.scrollerHeader .scrollerHeaderText {
+    left: -22%;
+    position: relative;
+    text-wrap: wrap;
+    width: 30%;
+    text-transform: uppercase;
+}
+
+.scrollerHeader .scrollerHeaderIcon {
+    right: -22%;
+    position: relative;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.scrollerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 0;
+    overflow-y: auto ;
+    height: 850px;
+    z-index: 3;
+}
+
+.scrollerContent::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollerContent .scrollerCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 92%;
+    background: var(--background);
+    border-radius: 20px;
+    margin: 1.4rem 0;
+    padding: 1rem;
+    box-shadow: 4px 9px 15px -9px var(--acc);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.scrollerContent .scrollerCard::before {
+    content: '';
+    position: absolute;
+    background: var(--acc);
+    width: 20vw;
+    max-width: 400px;
+    min-width: 280px;
+    height: 20vw;
+    max-height: 400px;
+    min-height: 280px;
+    left: -10%;
+    border-radius: 100%;
+    z-index: 0;
+}
+
+.scrollerContent .scrollerCard .scrollerCardInnerCircle {
+    min-width: 125px;
+    height: 125px;
+    background: var(--accLow);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    z-index: 1;
+    position: relative;
+    left: 3%;
+    color: var(--background);
+    font-size: 2.6em;
+}
+
+.scrollerContent .scrollerCard .scrollerCardContent {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.scrollerContent .scrollerCard .scrollerCardContent div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-left: 12%;
+    position: relative;
+}
+
+.scrollerContent .scrollerCard .scrollerCardContent div h3,span {
+    margin: .5rem 0 .5rem 0;
+}
+
+.scrollerContent .scrollerCard .scrollerCardContent div h4,p {
+    margin: .5rem 0 .5rem 2rem;
+}
+
+.scrollerContent .scrollerCard .scrollerCardContent div h3 {
+    font-size: 1.8em;
+}
+
+.scrollerContent .scrollerCard .scrollerCardContent div h4 {
+    font-size: 1.2em;
+    font-weight: 400;
+    color: var(--sub);
+}
+
+.scrollerContent .scrollerCard .scrollerCardContent div p {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--accWhite);
+}
+
+.scrollerContent .scrollerCard .scrollerCardContent div span {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: var(--accLow);
+}
+
+.scrollerContent .scrollerCard .scrollerCardContent .interStatut {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    font-size: 5em;
+    color: var(--acc);
+    position: absolute;
+    right: 2%;
+}
+
+/* --------------------------------------  ACCUEIL ------------------------------------ */
+
+.accueilContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--background);
+    color: var(--acc);
+    width: 70%;
+}
+
+.accueilContainer .acceuilStats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.accueilContainer .acceuilStats .accueilStatCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+}
+
+.accueilContainer .acceuilStats .accueilStatCard .iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accueilContainer .acceuilStats .accueilStatCard .iconContainer .iconCircle {
+    width: 50px;
+    height: 50px;
+    background: var(--accBack);
+    color: var(--acc);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.accueilContainer .acceuilStats .accueilStatCard .iconContainer .iconCircle i {
+    font-size: 1.5em;
+}
+
+.accueilContainer .acceuilStats .accueilStatCard .statContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.accueilContainer .acceuilStats .accueilStatCard .statContent h3 {
+    font-size: 1.9em;
+    margin-bottom: .3rem;
+}
+
+.accueilContainer .acceuilStats .accueilStatCard .statContent h4 {
+    font-size: 1.1em;
+    color: var(--accWhite);
+    margin: 0;
+    font-weight: 400;
+}
+
+.accueilContainer .importBtnWrapper {
+    display: grid;
+    place-items: center;
+    margin: 10% 0;
+}
+
+.accueilContainer .importBtnWrapper .btnImport {
+    background: var(--acc);
+    color: var(--background);
+    padding: .8rem 1.8rem;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: .3s;
+    border: none;
+}

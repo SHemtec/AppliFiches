@@ -190,4 +190,12 @@ class MainController extends AbstractController
             'closedInterventionCount' => $closedInterventionCount,
         ]);
     }
+
+    #[Route('/newinterface', name: 'app_newinterface')]
+    public function newinterface(): Response
+    {
+        return $this->render('_partials/blocks.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }

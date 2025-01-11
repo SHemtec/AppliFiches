@@ -1,0 +1,18 @@
+:root {
+    --background: #21262C;
+    --acc: #15BD85;
+    --accBack: rgba(21, 189, 133, 0.33);
+    --accLow: #149167;
+    --accWhite: #FFFFFF;
+    --sub: #BEBEBE;
+    --gradientRight: linear-gradient(90deg, rgba(21,189,133,1) 70%, rgba(33,38,44,1) 90%);
+    --gradientBottom: linear-gradient(180deg, rgba(21,189,133,1) 28%, rgba(33,38,44,1) 93%);
+}
+
+.acc {
+    color: var(--acc);
+}
+
+.absolute {
+    position: absolute;
+}
