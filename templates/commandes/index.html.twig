@@ -3,69 +3,60 @@
 {% block title %}Commandes index{% endblock %}
 
 {% block body %}
-    <main class="commandesPage">
-        <h1>Commandes enregistrées</h1>
+
+    <main>
 
         <div class="searchBarWrapper">
             <input type="text" id="searchBar" class="searchBar" placeholder="Rechercher des commandes...">
         </div>
 
-        <article class="commandesWrapper">
-            <a id="createCommandeButton" style="width: 20%" class="btn btn-primary">Créer une commande</a>
-            {% for commande in commandes %}
-                <a href="{{ path('app_commandes_show', {'id': commande.id}) }}" class="commande" id="{{ commande.id }}">
-                    <div class="commandeContent">
-                        <div class="commandeInfo">
-                            <h2>{{ commande.Produits }}</h2>
-                            <span>Fournisseur : {{ commande.fournisseur }}</span>
-                            <span class="date">Ajouté le : {{ commande.createdAt ? commande.createdAt|date('d/m/Y H:i') : '' }}</span>
-                            <span class="date">Commandé le : {{ commande.orderedAt ? commande.orderedAt|date('d/m/Y H:i') : '' }}</span>
-                            <span class="status {{ commande.status ? 'status-commande' : 'status-non-commande' }}">
-                                {{ commande.status ? 'Commandé' : 'Pas commandé' }}
-                            </span>
-                            <span class="status {{ commande.deliveryStatus ? 'status-livree' : 'status-non-livree' }}">
-                                {{ commande.deliveryStatus ? 'Livré' : 'Pas livré' }}
-                            </span>
-                            <span class="status {{ commande.clientCalledStatus ? 'status-client-appele' : 'status-client-non-appele' }}">
-                                {{ commande.clientCalledStatus ? 'Client prévenu' : 'Client non prévenu' }}
-                            </span>
 
-                            {% if commande.intervention %}
-                                <div class="interventionDetails">
-                                    <span><strong>{{ commande.intervention.client.name }}:</strong></span>
-                                    <span> {{ commande.intervention.materiel }}</span>
-                                    <span> {{ commande.intervention.probleme }}</span>
-                                </div>
-                            {% endif %}
+        <div class="backgroundScrollerWrapper">
+            <div class="scrollerWrapper">
+                <section class="scrollerHeader">
+                    <h2 class="scrollerHeaderText">Commandes enregistrées</h2>
+                    <i class="bi bi-arrow-down acc absolute scrollerHeaderArrow"></i>
+                    <a id="createCommandeButton" style="cursor: pointer" class="bi bi-plus scrollerHeaderIcon"></a>
+                </section>
 
-                            <section class="commandeButtonWrapper">
-                                {% if not commande.status %}
-                                    <form action="{{ path('app_commandes_validate', {'id': commande.id}) }}" method="post">
-                                        <button type="submit" class="btn btn-primary">Marquer comme Commandée</button>
-                                    </form>
-                                {% endif %}
-
-                                {% if commande.deliveryStatus == false %}
-                                    <form action="{{ path('app_commandes_validate_delivery', {'id': commande.id}) }}" method="post">
-                                        <button type="submit" class="btn btn-primary">Valider la livraison</button>
-                                    </form>
-                                {% endif %}
-
-                                {% if commande.clientCalledStatus == false %}
-                                    <form action="{{ path('app_commandes_validate_call', {'id': commande.id}) }}" method="post">
-                                        <button type="submit" class="btn btn-primary">Valider l'appel</button>
-                                    </form>
-                                {% endif %}
+                <section class="scrollerContent">
+                    {% for commande in commandes %}
+                        <a href="{{ path('app_commandes_show', {'id': commande.id}) }}" class="scrollerCard commandScrollerCard" id="{{ commande.id }}">
+                            <section class="scrollerCardInnerCircle">
+                                <span>CC</span>
                             </section>
-                        </div>
-                    </div>
-                </a>
-            {% else %}
-                <p class="noCommandes">Aucune commande trouvée</p>
-            {% endfor %}
-        </article>
-    </main>
 
+                            <section class="scrollerCardContent">
+                                <div>
+                                    <h3>{{ commande.Produits }}</h3>
+                                    <h4>{{ commande.fournisseur }}</h4>
+                                    <span class="createdAt">Ajouté le : {{ commande.createdAt ? commande.createdAt|date('d/m/Y H:i') : '' }}</span>
+                                    <span class="orderedAt"> Commandé le : {{ commande.orderedAt ? commande.orderedAt|date('d/m/Y H:i') : '' }}</span>
+                                    <h4 class="ordered {{ commande.status ? 'status-commande' : 'status-non-commande' }}">{{ commande.status ? 'Commandé' : 'Pas commandé' }}</h4>
+                                    <h4 class="delivered {{ commande.deliveryStatus ? 'status-livree' : 'status-non-livree' }}">{{ commande.deliveryStatus ? 'Livré' : 'Pas livré' }}</h4>
+                                    <h4 class="called {{ commande.clientCalledStatus ? 'status-client-appele' : 'status-client-non-appele' }}">{{ commande.clientCalledStatus ? 'Client prévenu' : 'Client non prévenu' }}</h4>
+                                    {% if commande.intervention %}
+                                        <h3 class="details"> <i class="bi bi-person"></i>
+                                            <strong>{{ commande.intervention.client.name }}:</strong>
+                                             {{ commande.intervention.materiel }}
+                                             {{ commande.intervention.probleme }}
+                                        </h3>
+                                    {% endif %}
+                                </div>
+
+                                <span class="interStatut">
+                                    <i class="bi bi-check-circle" title="Terminé"></i>
+                                </span>
+                            </section>
+                        </a>
+                    {% else %}
+                        <p class="noCommandes">Aucune commande trouvée</p>
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
+
+    </main>
     <div id="createCommandeModal" class="commandeModal">
         <div class="commandeModalContent">
             <span class="commandeModalClose">&times;</span>

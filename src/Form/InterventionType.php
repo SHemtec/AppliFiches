@@ -47,12 +47,8 @@ class InterventionType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'row_attr' => ['class' => 'formGroup']
             ])
-            ->add('Nettoyage', CheckboxType::class, [
-                'label' => 'Nettoyage',
-                'required' => false,
-                'attr' => ['class' => 'form-check-input'],
-                'row_attr' => ['class' => 'formGroupCheckbox'],
-            ])
+
+            /*
             ->add('statut', ChoiceType::class, [
                 'label' => 'Statut',
                 'choices' => [
@@ -70,7 +66,7 @@ class InterventionType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'row_attr' => ['class' => 'formGroup'],
                 'data' => $options['data']->getClient(),
-            ])
+            ])*/
         ;
     }
 

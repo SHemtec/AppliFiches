@@ -3,67 +3,65 @@
 {% block title %}Client{% endblock %}
 
 {% block body %}
+    <main>
+        <div class="clientWrapper">
+            <article class="card">
+                <a id="editClientButton" data-client-id="{{ client.id }}"><i class="bi bi-pencil-square"></i></a>
+                <div class="cardSection contentSection">
+                    <section class="cardCircle">
+                        <i class="bi bi-person-fill"></i>
+                    </section>
+                    <h2 class="">{{ client.name }}</h2>
+                    <h3 class="">{{ client.tel }}</h3>
+                    <h4 class="">{{ client.email }}</h4>
+                    <section class="dateWrap">
+                        <p>Ajouté le : {{ client.createdAt|date('d/m/Y') }}</p>
+                    </section>
+                </div>
+            </article>
+        </div>
 
-    <main class="clientShow">
-        <h1>{{ client.name }}</h1>
+        <div class="backgroundScrollerWrapper">
+            <div class="scrollerWrapper">
+                <section class="scrollerHeader">
+                    <h2 class="scrollerHeaderText">{{ interventions|length }} Interventions</h2>
+                    <i class="bi bi-arrow-down acc absolute scrollerHeaderArrow"></i>
+                    <a id="createInterventionButton" data-client-id="{{ client.id }}" class="bi bi-journal-plus scrollerHeaderIcon" style="cursor: pointer"></a>
+                </section>
 
-        <article class="clientInfo">
-            <h2>Informations</h2>
-            <section>
-                <span>{{ client.name }}</span>
-                <span>{{ client.tel }}</span>
-                <span>{{ client.email }}</span>
-                <span>{{ client.createdAt|date('d/m/Y') }}</span>
-            </section>
-            <a id="editClientButton" data-client-id="{{ client.id }}" style="cursor: pointer"><i class="bi bi-pencil-square"></i></a>
-        </article>
-
-        <article class="clientInter">
-            <h2>{{ interventions|length }} Interventions</h2>
-            <a class="newInterButton" id="createInterventionButton" data-client-id="{{ client.id }}">+ Nouvelle intervention</a>
-            <section class="clientInterContent">
-                {% for inter in interventions %}
-                    <a href="{{ path('app_intervention_show', {'id': inter.id}) }}" content="intervention" class="intervention" id="{{ inter.id }}">
-                        <div class="interventionContent">
-                            <section class="interventionContentImg">
-                                <img src="" alt="">
+                <section class="scrollerContent">
+                    {% for inter in interventions %}
+                        <a href="{{ path('app_intervention_show', {'id': inter.id}) }}" content="intervention" class="scrollerCard" id="{{ inter.id }}">
+                            <section class="scrollerCardInnerCircle">
+                                <span>{{ inter.client.name|slice(0, 2) }}</span>
                             </section>
 
-                            <div class="interventionInfo">
-                                <h3>{{ inter.Materiel }}</h3>
-                                <span>{{ inter.Probleme }}</span>
+                            <section class="scrollerCardContent">
+                                <div>
+                                    <h3>{{ inter.Materiel }}</h3>
+                                    <p class="prob">{{ inter.Probleme }}</p>
+                                    {% if inter.finishedAt %}
+                                        <span>Clôturé le : {{ inter.finishedAt|date('d/m/Y H:i') }}</span>
+                                    {% else %}
+                                        <span>Ajouté le : {{ inter.createdAt|date('d/m/Y H:i') }}</span>
+                                    {% endif %}
+                                </div>
 
-                                {# si intervention cloturée, afficher date de cloture sinon date de création #}
-                                {% if inter.finishedAt %}
-                                    <span style="color: green">Clôturé le : {{ inter.finishedAt|date('d/m/Y H:i') }}</span>
-                                {% else %}
-                                    <span style="color: orange">Ajouté le : {{ inter.createdAt|date('d/m/Y H:i') }}</span>
-                                {% endif %}
-
-                                {% if inter.statut != 2 %}
-                                    <form action="{{ path('app_intervention_close', {'id': inter.id}) }}" method="post">
-                                        <input type="hidden" name="redirect_url" value="{{ app.request.uri }}">
-                                        <button type="submit" class="clientInterClotureBtn">
-                                            <i class="bi bi-check-circle"></i> Clôturer l'intervention
-                                        </button>
-                                    </form>
-                                {% endif %}
                                 <span class="interStatut">
                                     {% if inter.statut == 0 %}
-                                        <i class="bi bi-x-circle" style="color: red" title="Non traité"></i>
+                                        <i class="bi bi-x-circle" title="Non traité"></i>
                                     {% elseif inter.statut == 1 %}
-                                        <i class="bi bi-clock" style="color: orange"  title="En cours"></i>                                      
+                                        <i class="bi bi-clock"  title="En cours"></i>
                                     {% elseif inter.statut == 2 %}
-                                        <i class="bi bi-check-circle" style="color: green"  title="Terminé"></i>
+                                        <i class="bi bi-check-circle"  title="Terminé"></i>
                                     {% endif %}
                                 </span>
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
-            </section>
-
-        </article>
+                            </section>
+                        </a>
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
     </main>
 
     <div id="interventionModal" class="interventionModal">

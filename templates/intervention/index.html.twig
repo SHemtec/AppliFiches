@@ -3,61 +3,50 @@
 {% block title %}Intervention index{% endblock %}
 
 {% block body %}
-    <main class="interventionPage">
-        <h1>Interventions enregistrées</h1>
+    <main>
 
         <div class="searchBarWrapper">
             <input type="text" id="searchBar" class="searchBar" placeholder="Rechercher des interventions...">
         </div>
 
         {% set currentDate = null %}
-        <article class="interventionWrapper">
-            {% for intervention in interventions %}
-                {% set interventionDate = intervention.createdAt|date('d/m/Y') %}
-                {% if currentDate != interventionDate %}
-                    {% set currentDate = interventionDate %}
-                    <div class="dateIndicator">
-                        <span class="dateLine">{{ currentDate }}</span>
+        {% for intervention in interventions %}
+            {% set interventionDate = intervention.createdAt|date('d/m/Y') %}
+            {% if currentDate != interventionDate %}
+                {% set currentDate = interventionDate %}
+                <div class="dateIndicator">
+                    <span class="dateLine">{{ currentDate }}</span>
+                </div>
+            {% endif %}
+
+            <a href="{{ path('app_intervention_show', {'id': intervention.id}) }}" content="intervention" class="scrollerCard interScrollerCard" id="{{ intervention.id }}">
+                <section class="scrollerCardInnerCircle">
+                    <span>{{ intervention.client.name|slice(0, 2) }}</span>
+                </section>
+
+                <section class="scrollerCardContent">
+                    <div>
+                        <h3>{{ intervention.client.name }}</h3>
+                        <h4>{{ intervention.Materiel }}</h4>
+                        <p>{{ intervention.Probleme }}</p>
+                        <span class="createdAt">Ajouté le : {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
+                        {% if intervention.statut == 2 %}
+                            <span class="closedAt">Cloturé le : {{ intervention.finishedAt|date('d/m/Y H:i') }}</span>
+                        {% endif %}
                     </div>
-                {% endif %}
-                <a href="{{ path('app_intervention_show', {'id': intervention.id}) }}" content="intervention" class="intervention" id="{{ intervention.id }}">
-                    <div class="interventionContent">
-                        <section class="interventionContentImg">
-                            <img src="" alt="">
-                        </section>
 
-                        <div class="interventionInfo">
-                            <h2>{{ intervention.client.name }}</h2>
-                            <h3>{{ intervention.Materiel }}</h3>
-                            <span class="probSpan">{{ intervention.Probleme }}</span>
-                            <span style="color: orange">Ajouté le : {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
-                            {% if intervention.statut == 2 %}
-                                <span style="color: green">Clôturé le : {{ intervention.finishedAt|date('d/m/Y H:i') }}</span>
-                            {% endif %}
-
-                            {% if intervention.statut != 2 %}
-                                <form action="{{ path('app_intervention_close', {'id': intervention.id}) }}" method="post">
-                                    <input type="hidden" name="redirect_url" value="{{ app.request.uri }}">
-                                    <button type="submit" class="btn btn-primary clientInterClotureBtn">
-                                        <i class="bi bi-check-circle"></i> Clôturer l'intervention
-                                    </button>
-                                </form>
-                            {% endif %}
-
-                            <span class="interStatut">
+                    <span class="interStatut">
                                 {% if intervention.statut == 0 %}
-                                    <i class="bi bi-x-circle" style="color: red" title="Non traité"></i>
+                                    <i class="bi bi-x-circle" title="Non traité"></i>
                                 {% elseif intervention.statut == 1 %}
-                                    <i class="bi bi-clock" style="color: orange" title="En cours"></i>
+                                    <i class="bi bi-clock" title="En cours"></i>
                                 {% elseif intervention.statut == 2 %}
-                                    <i class="bi bi-check-circle" style="color: green" title="Terminé"></i>
+                                    <i class="bi bi-check-circle" title="Terminé"></i>
                                 {% endif %}
                             </span>
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
-        </article>
+                </section>
+            </a>
+        {% endfor %}
     </main>
 {% endblock %}
 

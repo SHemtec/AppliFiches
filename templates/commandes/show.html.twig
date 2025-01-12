@@ -3,62 +3,48 @@
 {% block title %}Commande{% endblock %}
 
 {% block body %}
-    <main class="commandeShow">
-        <h1>Commande</h1>
-
-        <article class="commandeInfo">
-            <section class="commandeShowWrapper">
-                <h2>Détails de la commande</h2>
-                <span class="commandeShowStatus">
+    <main>
+        <div class="clientWrap">
+            <article class="card">
+                <div class="cardSection contentSection">
+                    <section class="cardCircle">
+                        <i class="bi bi-truck"></i>
+                    </section>
+                    <h2 class="">{{ commande.Produits }}</h2>
+                    <h3 class="">Ajouté le : {{ commande.createdAt|date('d/m/Y H:i') }}</h3>
+                    <h3 class="">Commandé le : {{ commande.orderedAt ? commande.orderedAt|date('d/m/Y H:i') : 'Non commandé' }}</h3>
+                    {% if commande.intervention %}<h4><strong>Intervention:</strong> <a style="text-underline: #007bff; color: var(--acc)" href="{{ path('app_intervention_show', {'id': commande.intervention.id}) }}">{{ commande.intervention.Materiel }}</a></h4> {% endif %}
                     {% if commande.status %}
-                        <i class="bi bi-check-circle" style="color: green" title="Completed"></i>
+                        <i class="bi bi-check2-circle icon"  title="Completed"></i>
                     {% else %}
-                        <i class="bi bi-x-circle" style="color: red" title="Pending"></i>
+                        <i class="bi bi-x-circle icon" title="Pending"></i>
                     {% endif %}
-                </span>
+                </div>
+            </article>
 
-                <span><strong>Produits:</strong> {{ commande.Produits }}</span>
-                <span><strong>Créé le:</strong> {{ commande.createdAt|date('d/m/Y H:i') }}</span>
-                <span><strong>Commandé le:</strong> {{ commande.orderedAt ? commande.orderedAt|date('d/m/Y H:i') : 'Non commandé' }}</span>
-                {% if commande.intervention %} <span><strong>Intervention:</strong> <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_intervention_show', {'id': commande.intervention.id}) }}">{{ commande.intervention.Materiel }}</a></span> {% endif %}
-            </section>
-        </article>
-
-        <div class="commandeActions">
-            <a href="{{ path('app_commandes_index') }}" class="btn btn-secondary">Retour à la liste</a>
-            {# <a id="editCommandeBtn" data-commande-id="{{ commande.id }}" class="btn btn-primary">Modifier</a> #}
-            {{ include('commandes/_delete_form.html.twig') }}
-
-            <section class="commandeButtonWrapper">
+            <section class="buttons">
+                <a href="{{ path('app_commandes_index') }}" class="bi bi-arrow-left"></a>
                 {% if not commande.status %}
                     <form action="{{ path('app_commandes_validate', {'id': commande.id}) }}" method="post">
-                        <button type="submit" class="btn btn-success">Marquer comme commandé</button>
+                        <button type="submit" title="valider la commande" style="background: transparent; border: none; cursor: pointer; display: grid; place-items: center; font-size: 1em; color: var(--acc)"><i class="bi bi-bag-check"></i></button>
                     </form>
                 {% endif %}
 
                 {% if commande.deliveryStatus == false %}
                     <form action="{{ path('app_commandes_validate_delivery', {'id': commande.id}) }}" method="post">
-                        <button type="submit" class="btn btn-success">Valider la livraison</button>
+                        <button type="submit" title="valider la livraison" style="background: transparent; border: none; cursor: pointer; display: grid; place-items: center; font-size: 1em; color: var(--acc)"><i class="bi bi-truck"></i></button>
                     </form>
                 {% endif %}
 
                 {% if commande.clientCalledStatus == false %}
                     <form action="{{ path('app_commandes_validate_call', {'id': commande.id}) }}" method="post">
-                        <button type="submit" class="btn btn-success">Valider l'appel</button>
+                        <button type="submit" title="valider l'appel au client" style="background: transparent; border: none; cursor: pointer; display: grid; place-items: center; font-size: 1em; color: var(--acc)"><i class="bi bi-telephone"></i></button>
                     </form>
                 {% endif %}
+                {{ include('commandes/_delete_form.html.twig') }}
             </section>
         </div>
     </main>
-
-    <div id="editCommandeModal" class="commandeModal">
-        <div class="commandeModalContent">
-            <span class="commandeModalClose">&times;</span>
-            <div id="editCommandeModalBody" class="commandeModalBody">
-                <!-- Form will be loaded here -->
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block javascripts %}

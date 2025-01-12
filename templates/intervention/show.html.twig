@@ -3,133 +3,77 @@
 {% block title %}Intervention{% endblock %}
 
 {% block body %}
-    <aside class="sidebar close">
-        <div class="logo-details" style="margin-top: 1rem">
-            <i class="bi bi-person-circle"></i>
-            <span class="logo_name">{{ intervention.client.name }}</span>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="{{ path('app_client_show', {'id': intervention.client.id}) }}">
-                    <i class='bi bi-person' ></i>
-                    <span class="link_name">Client</span>
-                </a>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="#">
-                        <i class="bi bi-files"></i>
-                        <span class="link_name">Interventions</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow' ></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Interventions</a></li>
-                    {% for inter in intervention.client.intervention %}
-                    <li><a class="" href="{{ path('app_intervention_show', {'id': inter.id}) }}">{{ inter.probleme }}</a></li>
-                    {% endfor %}
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="#">
-                        <i class="bi bi-truck"></i>
-                        <span class="link_name">Commandes</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow' ></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Commandes</a></li>
-                    {% for cmd in intervention.commande %}
-                    <li><a href="{{ path('app_commandes_show', {'id': cmd.id}) }}">{{ cmd.produits }}</a></li>
-                    {% endfor %}
-                </ul>
-            </li>
-        </ul>
-    </aside>
-    <main class="home-section interventionShow">
-        <h1>Intervention</h1>
-
-        <article class="interventionInfo">
-            <section class="interventionShowWrapper">
-                <h2>Détails de l'intervention</h2>
-                <span class="interShowStatus">
+    <main>
+        <div class="interventionWrapper">
+            <article class="card">
+                <a class="cardSection clientSection" href="{{ path('app_client_show', {'id': intervention.client.id}) }}" style="cursor: pointer">
+                    <section class="cardCircle">
+                        <i class="bi bi-person-fill"></i>
+                    </section>
+                    <h2>{{ intervention.client.name }}</h2>
+                    <h3>{{ intervention.client.tel }}</h3>
                     {% if intervention.statut == 0 %}
-                        <i class="bi bi-x-circle" style="color: red" title="Non traité"></i>
+                        <i class="bi bi-x-circle status" title="Non traité"></i>
                     {% elseif intervention.statut == 1 %}
-                        <i class="bi bi-clock" style="color: orange"  title="En cours"></i>
+                        <i class="bi bi-clock status"  title="En cours"></i>
                     {% elseif intervention.statut == 2 %}
-                        <i class="bi bi-check-circle" style="color: green"  title="Terminé"></i>
+                        <i class="bi bi-check-circle status"  title="Terminé"></i>
                     {% endif %}
-                </span>
+                </a>
+                <hr>
+                <div class="cardSection contentSection">
+                    <h3 class="materiel">{{ intervention.Materiel }}</h3>
+                    <h2 class="prob">{{ intervention.Probleme }}</h2>
+                    <i class="password">{{ intervention.MdpSession }}</i>
+                    <span class="ope">{{ intervention.Operations }}</span>
+                    <h4 class="prix">{{ intervention.Cout }}</h4>
+                    <section class="dateWrap">
+                        <p>Ajouté le : {{ intervention.createdAt|date('d/m/Y H:i') }}</p>
+                        <p>Cloturé le : {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</p>
+                    </section>
+                </div>
+            </article>
 
-                <section class="interInfoWrapper">
-                    <span><strong>Client:</strong> <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_client_show', {'id': intervention.client.id}) }}">{{ intervention.client.name }}</a></span>
-                    <span><strong>Tel:</strong> {{ intervention.client.tel }}</span>
-                    <span><strong>Matériel:</strong> {{ intervention.Materiel }}</span>
-                    <span><strong>Mot de passe session:</strong> {{ intervention.MdpSession }}</span>
-                    <span><strong>Problème:</strong> {{ intervention.Probleme }}</span>
-                    <span><strong>Opérations:</strong> {{ intervention.Operations }}</span>
-                    <span><strong>Coût:</strong> {{ intervention.Cout }}</span>
-                    <span><strong>Nettoyage:</strong> {{ intervention.Nettoyage ? 'Oui' : 'Non' }}</span>
-                    <span><strong>Créé le:</strong> {{ intervention.createdAt|date('d/m/Y H:i') }}</span>
-                    <span class="cloture"><strong>Clôturé le:</strong> {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</span>
-                    {% if intervention.commande|length > 0 %}
-                        <span><strong>Commandes:</strong>
-                        {% for commande in intervention.commande %}
-                            <a style="text-underline: #007bff; color: #007bff" href="{{ path('app_commandes_show', {'id': commande.id}) }}">{{ commande.produits }}</a>
-                        {% endfor %}
-                    </span>
-                    {% endif %}
-                </section>
-            </section>
-        </article>
+            <article class="interventionButtons">
+                <a href="{{ path('app_intervention_index') }}" title="retour a la liste" class="bi bi-arrow-left"></a>
+                <a id="editInterventionBtn" title="modifier / clôturer l'intervention" data-intervention-id="{{ intervention.id }}" class="bi bi-pencil-fill"></a>
+                {{ include('intervention/_delete_form.html.twig') }}
+                <a id="printInterventionButton" title="imprimer la fiche" class="bi bi-printer-fill"></a>
 
-        <div class="interventionActions">
-            <a href="{{ path('app_intervention_index') }}" class="btn btn-secondary">Retour à la liste</a>
-            <a id="editInterventionBtn" data-intervention-id="{{ intervention.id }}" class="btn btn-primary">Modifier / Clôturer</a>
-            {{ include('intervention/_delete_form.html.twig') }}
-            <a id="printInterventionButton" class="btn btn-secondary">Imprimer la fiche</a>
+                {% if intervention.statut != 2 %}
+                    <form action="{{ path('app_intervention_close', {'id': intervention.id}) }}" method="post">
+                        <button type="submit" title="clôturer l'intervention" style="background: transparent; border: none; display: grid; place-items: center; font-size: 1em; color: var(--acc); cursor: pointer"><i class="bi bi-check2-circle"></i></button>
+                    </form>
+                {% endif %}
 
-            {% if intervention.statut != 2 %}
-                <form action="{{ path('app_intervention_close', {'id': intervention.id}) }}" method="post">
-                    <button type="submit" class="btn btn-success">Clôturer l'intervention</button>
-                </form>
-            {% endif %}
+                {% if intervention.statut == 2 %}
+                    <form action="{{ path('app_intervention_reopen', {'id': intervention.id}) }}" method="post">
+                        <button type="submit" title="rouvrir l'intervention" style="background: transparent; border: none; display: grid; place-items: center; font-size: 1em; color: var(--acc); cursor: pointer"><i class="bi bi-arrow-counterclockwise"></i></button>
+                    </form>
+                {% endif %}
+            </article>
 
-            {% if intervention.statut == 2 %}
-                <form action="{{ path('app_intervention_reopen', {'id': intervention.id}) }}" method="post">
-                    <button type="submit" class="btn btn-success">Rouvrir l'intervention</button>
-                </form>
+            {% if intervention.commande|length > 0 %}
+                {% for commande in intervention.commande %}
+                    <a href="{{ path('app_commandes_show', {'id': commande.id}) }}" class="scrollerCard command" id="">
+                        <section class="scrollerCardInnerCircle">
+                            <span><i class="bi bi-truck"></i></span>
+                        </section>
+
+                        <section class="scrollerCardContent">
+                            <div>
+                                <h3>{{ commande.produits }}</h3>
+                                <h4>{{ commande.fournisseur }}</h4>
+                            </div>
+
+                            <span class="interStatut">
+                            <i class="bi bi-chevron-right"></i>
+                        </span>
+                        </section>
+                    </a>
+                {% endfor %}
             {% endif %}
         </div>
-
-        <article class="interTests">
-            <h2>Tests</h2>
-
-            <div class="interTestsButtons">
-                <a id="createTestButton" data-intervention-id="{{ intervention.id }}" class="btn btn-primary">Ajouter un test</a>        {{ include('test/_delete_form.html.twig') }}
-
-            </div>
-            <section class="interTestsWrapper">
-                <!-- Existing content -->
-                <section class="testSection">
-                    {% for test in intervention.test %}
-                        <div class="testContent">
-                            <h3>{{ test.Titre }}</h3>
-                            <span>{{ test.Description }}</span>
-                            {% if test.photoName != null %}
-                                <div class="testCaptures">
-                                    <img src="{{ asset('uploads/' ~ test.photoName) }}" alt="Test Photo">
-                                </div>
-                            {% else %}
-                                <span> Ce test n'a pas de captures associées</span>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </section>
-            </section>
-        </article>
     </main>
 
     <div id="editInterventionModal" class="interventionModal">

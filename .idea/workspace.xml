@@ -4,14 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : debut de la refonte de l'interface 15%">
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : refonte de l'interface 25%">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/styleNew.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styleNew.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/variables.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/recherche.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/recherche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/InterventionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InterventionType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/_partials/blocks.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/blocks.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/client/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/client/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/commandes/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commandes/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/commandes/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commandes/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/commandes/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commandes/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/intervention/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/intervention/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/intervention/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,6 +189,9 @@
       <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -266,7 +277,9 @@
       <workItem from="1736502914292" duration="87000" />
       <workItem from="1736503025739" duration="4000" />
       <workItem from="1736503209168" duration="57000" />
-      <workItem from="1736596389930" duration="15505000" />
+      <workItem from="1736596389930" duration="15551000" />
+      <workItem from="1736619517480" duration="13062000" />
+      <workItem from="1736633741342" duration="7726000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -508,7 +521,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736608534330</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="ADD : refonte de l'interface 25%">
+      <option name="closed" value="true" />
+      <created>1736612894235</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1736612894235</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,7 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add : creation des entités" />
     <MESSAGE value="Add : creation des inter et des clients avec modales" />
     <MESSAGE value="Add : stylisation des inter et ajout des recherches" />
     <MESSAGE value="Add : import des fiches FONCTIONNEL pour les format de 2014 et 2024 voir si d'autres formats existent" />
@@ -552,7 +572,8 @@
     <MESSAGE value="ADD : ajout d'un nouveau flash, reparation de la modif/cloture des inter et correction du css des flash" />
     <MESSAGE value="EDIT : réactivation des animations des flash" />
     <MESSAGE value="ADD : debut de la refonte de l'interface 15%" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD : debut de la refonte de l'interface 15%" />
+    <MESSAGE value="ADD : refonte de l'interface 25%" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD : refonte de l'interface 25%" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const searchBar = document.getElementById('searchBar');
-    const interventions = document.querySelectorAll('.intervention');
+    const interventions = document.querySelectorAll('.scrollerCard');
     const dateIndicators = document.querySelectorAll('.dateIndicator');
 
     searchBar.addEventListener('keyup', function (e) {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const relatedInterventions = [];
             let nextElement = dateIndicator.nextElementSibling;
 
-            while (nextElement && nextElement.classList.contains('intervention')) {
+            while (nextElement && nextElement.classList.contains('scrollerCard')) {
                 relatedInterventions.push(nextElement);
                 nextElement = nextElement.nextElementSibling;
             }

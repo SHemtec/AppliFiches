@@ -9,6 +9,7 @@
     --gradientRight: linear-gradient(90deg, rgba(21,189,133,1) 70%, rgba(33,38,44,1) 90%);
     --gradientBottom: linear-gradient(180deg, rgba(21,189,133,1) 28%, rgba(33,38,44,1) 93%);
     --gradientMid: linear-gradient(90deg, rgba(33,38,44,1) 10%, rgba(21,189,133,1) 50%, rgba(33,38,44,1) 90%);
+    --gradientMidVertical: linear-gradient(0deg, rgba(33,38,44,1) 10%, rgba(21,189,133,1) 50%, rgba(33,38,44,1) 90%);
 }
 
 .acc {

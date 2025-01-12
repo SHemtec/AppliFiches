@@ -9,6 +9,10 @@ body {
     align-items: center;
 }
 
+.preloaded {
+    display: none;
+}
+
 nav {
     z-index: 10;
     display: flex;
@@ -23,6 +27,7 @@ nav {
     border-bottom: 5px solid var(--acc);
     border-image: var(--gradientRight) 1;
 }
+
 
 nav ul {
     display: flex;
@@ -54,7 +59,7 @@ nav a.active::after {
     right: 0;
     bottom: -5px; /* Adjust the spacing from the text */
     height: 3px; /* Adjust the height of the underline */
-    background: linear-gradient(to right, white, #c2c2c2);
+    background: var(--gradientRight);
     border-radius: 5px; /* Rounded corners */
 }
 
@@ -203,7 +208,7 @@ main {
     display: none;
 }
 
-.scrollerContent .scrollerCard {
+.scrollerCard {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -221,7 +226,7 @@ main {
     min-height: 200px;
 }
 
-.scrollerContent .scrollerCard::before {
+.scrollerCard::before {
     content: '';
     position: absolute;
     background: var(--acc);
@@ -236,7 +241,7 @@ main {
     z-index: 0;
 }
 
-.scrollerContent .scrollerCard .scrollerCardInnerCircle {
+.scrollerCard .scrollerCardInnerCircle {
     min-width: 125px;
     height: 125px;
     background: var(--accLow);
@@ -252,20 +257,21 @@ main {
     font-size: 2.6em;
 }
 
-.scrollerContent .scrollerCard .scrollerCardInnerCircle span {
+.scrollerCard .scrollerCardInnerCircle span {
     display: grid;
     place-items: center;
 }
 
-.scrollerContent .scrollerCard .scrollerCardContent {
+.scrollerCard .scrollerCardContent {
     position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
+    text-wrap: wrap;
 }
 
-.scrollerContent .scrollerCard .scrollerCardContent div {
+.scrollerCard .scrollerCardContent div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -274,37 +280,37 @@ main {
     position: relative;
 }
 
-.scrollerContent .scrollerCard .scrollerCardContent div h3,span {
+.scrollerCard .scrollerCardContent div h3,span {
     margin: .5rem 0 .5rem 0;
 }
 
-.scrollerContent .scrollerCard .scrollerCardContent div h4,p {
+.scrollerCard .scrollerCardContent div h4,p {
     margin: .5rem 0 .5rem 2rem;
 }
 
-.scrollerContent .scrollerCard .scrollerCardContent div h3 {
+.scrollerCard .scrollerCardContent div h3 {
     font-size: 1.8em;
 }
 
-.scrollerContent .scrollerCard .scrollerCardContent div h4 {
+.scrollerCard .scrollerCardContent div h4 {
     font-size: 1.2em;
     font-weight: 400;
     color: var(--sub);
 }
 
-.scrollerContent .scrollerCard .scrollerCardContent div p {
+.scrollerCard .scrollerCardContent div p {
     font-size: 1.1em;
     font-weight: 500;
     color: var(--accWhite);
 }
 
-.scrollerContent .scrollerCard .scrollerCardContent div span {
+.scrollerCard .scrollerCardContent div span {
     font-size: 1.1em;
     font-weight: 400;
     color: var(--accLow);
 }
 
-.scrollerContent .scrollerCard .scrollerCardContent .interStatut {
+.scrollerCard .scrollerCardContent .interStatut {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -477,6 +483,360 @@ main {
     cursor: pointer;
 }
 
+/* ------------------ Intervention modal ------------------*/
+
+/* General modal styles */
+.interventionModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: var(--accBackModal); /* Fallback color */
+}
+
+/* Modal content */
+.interventionModalContent {
+    background-color: var(--background);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid var(--acc);
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 5px;
+}
+
+/* Close button */
+.interventionModalClose {
+    color: var(--acc); /* Change color to black */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.interventionModalClose:hover,
+.interventionModalClose:focus {
+    color: var(--accBack); /* Change color on hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal body */
+.interventionModalBody {
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+/* Form styles */
+.interventionModal .interventionModalContent .interventionModalBody form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form div {
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: .5rem;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup input, textarea {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    color: var(--accWhite);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroupCheckbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroupCheckbox input {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup label {
+    font-weight: 400;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form button {
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--acc);
+    color: var(--background);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup select {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    background-color: var(--background);
+    color: var(--accWhite);
+}
+
+.interventionModal .interventionModalContent .interventionModalBody form .formGroup select {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    background-color: var(--background);
+    color: var(--accWhite);
+    box-sizing: border-box;
+}
+
+/* Modal container */
+.interventionModal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--accBackModal);
+    padding-top: 60px;
+}
+
+/* Modal content */
+.interventionModalContent {
+    background-color: var(--background);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid var(--acc);
+    width: 80%;
+    border-radius: 10px;
+}
+
+/* Close button */
+.interventionModalClose {
+    color: var(--acc);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.interventionModalClose:hover,
+.interventionModalClose:focus {
+    color: var(--accBack);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: .5rem;
+}
+
+.interventionCreateForm .formGroup select {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    background-color: var(--background);
+    color: var(--accWhite);
+}
+
+/* Form styles */
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup input,textarea {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    width: 100%;
+    color: var(--accWhite);
+    box-sizing: border-box;
+    background-color: var(--background);
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroupCheckbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroupCheckbox input {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm .formGroup,.formGroupCheckbox label {
+    font-weight: 400;
+    margin: 0 0 5px 5px;
+}
+
+.interventionModal .interventionModalContent .interventionModalBody .interventionCreateForm button {
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    color: var(--background);
+    cursor: pointer;
+}
+
+/* ------------------------ Commande Modal ------------------------*/
+
+.commandeModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--accBackModal);
+}
+
+.commandeModalContent {
+    background-color: var(--background);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--acc);
+    width: 80%;
+    border-radius: 10px;
+}
+
+.commandeModalClose {
+    color: var(--acc);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.commandeModalBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.commandeModalBody form div {
+    width: 100%;
+}
+
+.commandeModalBody form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.commandeModalBody form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.commandeModalBody form .formGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.commandeModalBody form .formGroup input {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    width: 100%;
+}
+
+.commandeModalBody form .formGroup label {
+    font-weight: 400;
+    margin: 0 0 5px 5px;
+}
+
+.commandeModalBody form button {
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--acc);
+    color: var(--background);
+    cursor: pointer;
+}
+
+.commandeModalBody form .formGroup select {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    background-color: var(--background);
+    color: var(--accWhite);
+}
+
+.formGroup input,textarea {
+    padding: 12px 8px;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    width: 100%;
+    color: var(--accWhite);
+    box-sizing: border-box;
+    background-color: var(--background);
+}
+
+#commandes {
+    gap: 1rem;
+}
+
 /* ------------------------ Button ------------------------*/
 
 
@@ -541,6 +901,7 @@ main {
     margin-bottom: 10px;
     border-radius: 50px;
     color: #fff;
+    border: 2px solid var(--accBack);
     opacity: 0.9;
     position: relative;
     animation: slide-in 0.5s forwards;
@@ -599,6 +960,227 @@ main {
 
 .flash-message.slide-out {
     animation: slide-out 0.5s forwards;
+}
+
+/* ------------------------ date indicator ------------------------*/
+
+/* style pour l'affichage de la date dans le sinter*/
+.dateIndicator {
+    text-align: center;
+    margin: 20px 0;
+    color: var(--acc);
+}
+
+.dateLine {
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+    background: transparent;
+}
+
+.dateLine::before,
+.dateLine::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: var(--acc);
+}
+
+.dateLine::before {
+    left: -100%;
+    margin-right: 10px;
+}
+
+.dateLine::after {
+    right: -100%;
+    margin-left: 10px;
+}
+
+/* ------------------------ Intervention scroller ------------------------*/
+
+.interScrollerCard .scrollerCardContent div .createdAt {
+    margin: .5rem 0 .5rem 2rem;
+}
+
+.interScrollerCard .scrollerCardContent div p {
+    margin: .5rem 0 .5rem 4rem;
+}
+
+/* ------------------------ Commandes scroller ------------------------*/
+
+.commandScrollerCard .scrollerCardContent div h3,span {
+    margin: .2rem 0 .2rem 0;
+}
+
+.commandScrollerCard .scrollerCardContent div h4,p {
+    margin: .2rem 0 .2rem 2rem;
+}
+
+.commandScrollerCard .scrollerCardContent div .createdAt {
+    margin: .2rem 0 .2rem 4rem;
+}
+
+.commandScrollerCard .scrollerCardContent div .orderedAt {
+    margin: .2rem 0 .2rem 6rem;
+}
+
+.commandScrollerCard .scrollerCardContent div .ordered {
+    margin: .2rem 0 .2rem 6rem;
+    text-decoration: underline;
+}
+
+.commandScrollerCard .scrollerCardContent div .delivered {
+    margin: .2rem 0 .2rem 4rem;
+    text-decoration: underline;
+}
+
+.commandScrollerCard .scrollerCardContent div .called {
+    margin: .2rem 0 .2rem 2rem;
+    text-decoration: underline;
+}
+
+.commandScrollerCard .scrollerCardContent div .details {
+    margin: .2rem 0 .2rem 0;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.commandScrollerCard {
+    min-height: 270px;
+}
+
+/* ------------------------  Card ------------------------*/
+
+.card {
+    width: 100%;
+    background: var(--background);
+    min-height: 400px;
+    border-radius: 25px;
+    box-shadow: 0 0 20px 0 var(--acc);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card p {
+    margin: .5rem 0
+}
+
+.card hr {
+    border: 1px solid var(--acc);
+    border-image: var(--gradientMidVertical) 1;
+}
+
+.cardSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    color: var(--acc);
+}
+
+.cardSection .cardCircle {
+    width: 100px;
+    height: 100px;
+    background: var(--accBack);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 1rem 0;
+    font-size: 3em;
+    color: var(--acc);
+}
+
+.clientSection h2 {
+    margin: 1.5rem 0;
+}
+
+.clientSection h3 {
+    margin:0 0 1rem 0;
+    color: var(--accWhite);
+    font-size: 1.5em;
+}
+
+.clientSection .status {
+    position: absolute;
+    font-size: 3.5em;
+    bottom: 1.5rem;
+}
+
+.contentSection {
+    justify-content: center;
+    text-align: center;
+}
+
+.contentSection h3 {
+    color: var(--sub);
+}
+
+.contentSection .password,.prix {
+    margin: 1rem 0;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: var(--accWhite);
+}
+
+.contentSection .ope {
+    margin: 1rem 0;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--acc);
+}
+
+.contentSection .dateWrap {
+    color: var(--accLow);
+}
+
+/* ------------------------ Preloader ------------------------*/
+
+.preloadWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: var(--background);
+    color: var(--acc);
+    transition: opacity 0.4s ease;
+    opacity: 1;
+    position: absolute;
+    z-index: 10000;
+}
+
+.preloadWrapper.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader {
+    width: 250px;
+    height: 22px;
+    border-radius: 20px;
+    color: var(--acc);
+    border: 2px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader-progress {
+    width: 0;
+    height: 100%;
+    background: currentColor;
+    border-radius: inherit;
+    transition: width 0.2s ease, opacity 0.4s ease;
+    opacity: 0; /* Start hidden */
+}
+
+.loader-progress.visible {
+    opacity: 1; /* Fade in */
 }
 
 /* --------------------------------------  ACCUEIL ------------------------------------ */
@@ -687,3 +1269,198 @@ main {
     transition: .3s;
     border: none;
 }
+
+/* --------------------------------------  Intervention ------------------------------------ */
+
+.interventionWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--background);
+    color: var(--acc);
+    width: 70%;
+}
+
+.interventionButtons {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 3em;
+}
+
+.interventionButtons a {
+    color: var(--acc);
+    cursor: pointer;
+}
+
+.interventionWrapper .command {
+    width: 100%;
+}
+
+.interventionWrapper .command::before {
+    max-width: 315px;
+    max-height: 315px;
+}
+
+/* --------------------------------------  Login form ------------------------------------ */
+
+/* Style for the login form container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--background);
+}
+
+/* Style for the login form */
+.login-form {
+    background: var(--accBackModal);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    color: var(--acc);
+}
+
+/* Style for form group */
+.login-form .form-group {
+    margin-bottom: 1rem;
+}
+
+/* Style for form labels */
+.login-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Style for form inputs */
+.login-form .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--acc);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: var(--background);
+    color: var(--accWhite);
+}
+
+/* Style for the submit button */
+.login-form button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--acc);
+    color: var(--background);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the submit button */
+.login-form button[type="submit"]:hover {
+    background-color: var(--accLow);
+}
+
+/* Style for error messages */
+.login-form .error-message {
+    color: red;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+/* --------------------------------------  Client Show ------------------------------------ */
+
+.clientWrapper {
+    width: 70%;
+}
+
+.clientWrapper h2 {
+    color: var(--acc);
+    font-size: 1.8em;
+    margin: 1rem 0;
+}
+
+.clientWrapper h3 {
+    color: var(--accWhite);
+    font-size: 1.5em;
+    margin: .5rem 0;
+}
+
+.clientWrapper h4 {
+    color: var(--sub);
+    font-size: 1.4em;
+    margin: 1rem 0;
+    font-weight: 400;
+}
+
+.clientWrapper .card .cardSection {
+    padding: 3rem 0;
+}
+
+.clientWrapper .card {
+    position: relative;
+}
+
+.clientWrapper .card a {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2em;
+    color: var(--acc);
+    cursor: pointer;
+    z-index: 5;
+}
+
+.prob {
+    margin: 1rem 0 1.4rem 0; !important;
+}
+
+/* --------------------------------------  Commande Show ------------------------------------ */
+
+.clientWrap {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clientWrap .card .cardSection h3 {
+    font-weight: 300;
+    font-size: 1em;
+}
+
+.clientWrap .card .cardSection h4 {
+    margin: 1rem 0;
+    color: var(--accWhite);
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+
+.clientWrap .card .cardSection .icon {
+    font-size: 3em;
+    color: var(--acc);
+}
+
+.clientWrap .buttons {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 2rem;
+    font-size: 3em;
+}
+
+.clientWrap .buttons a {
+    color: var(--acc);
+    cursor: pointer;
+}
+
