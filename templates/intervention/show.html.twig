@@ -3,7 +3,7 @@
 {% block title %}Intervention{% endblock %}
 
 {% block body %}
-    <main>
+    <main class="interventionContainer">
         <div class="interventionWrapper">
             <article class="card">
                 <a class="cardSection clientSection" href="{{ path('app_client_show', {'id': intervention.client.id}) }}" style="cursor: pointer">
@@ -22,14 +22,17 @@
                 </a>
                 <hr>
                 <div class="cardSection contentSection">
-                    <h3 class="materiel">{{ intervention.Materiel }}</h3>
+                    <h3 class="materiel"> {{ intervention.Materiel }}</h3>
                     <h2 class="prob">{{ intervention.Probleme }}</h2>
-                    <i class="password">{{ intervention.MdpSession }}</i>
+                    <i class="password"><i class="bi bi-key"></i> {{ intervention.MdpSession }}</i>
+                    {% if intervention.MdpEmail %}
+                        <i class="password"><i class="bi bi-envelope"></i> {{ intervention.MdpEmail }}</i>
+                    {% endif %}
                     <span class="ope">{{ intervention.Operations }}</span>
                     <h4 class="prix">{{ intervention.Cout }}</h4>
                     <section class="dateWrap">
                         <p>Ajouté le : {{ intervention.createdAt|date('d/m/Y H:i') }}</p>
-                        <p>Cloturé le : {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</p>
+                        <p class="cloture">Cloturé le : {{ intervention.finishedAt ? intervention.finishedAt|date('d/m/Y H:i') : 'Non clôturé' }}</p>
                     </section>
                 </div>
             </article>

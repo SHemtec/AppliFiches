@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : refonte de l'interface 25%">
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : refonte de l'interface 99% reste juste a paufiner, eventuellement refaire les form">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20250116124228.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styleOld.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/styleNew.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styleNew.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/variables.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/recherche.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/recherche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Intervention.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Intervention.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/InterventionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InterventionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_partials/blocks.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/blocks.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/client/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/commandes/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commandes/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/commandes/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commandes/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/commandes/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commandes/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/intervention/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/intervention/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/intervention/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -279,7 +273,11 @@
       <workItem from="1736503209168" duration="57000" />
       <workItem from="1736596389930" duration="15551000" />
       <workItem from="1736619517480" duration="13062000" />
-      <workItem from="1736633741342" duration="7726000" />
+      <workItem from="1736633741342" duration="7800000" />
+      <workItem from="1736764966183" duration="126000" />
+      <workItem from="1736765101907" duration="10000" />
+      <workItem from="1736774708834" duration="5562000" />
+      <workItem from="1737031169379" duration="3888000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -529,7 +527,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736612894235</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="ADD : refonte de l'interface 99% reste juste a paufiner, eventuellement refaire les form">
+      <option name="closed" value="true" />
+      <created>1736642448360</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1736642448360</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +554,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add : creation des inter et des clients avec modales" />
     <MESSAGE value="Add : stylisation des inter et ajout des recherches" />
     <MESSAGE value="Add : import des fiches FONCTIONNEL pour les format de 2014 et 2024 voir si d'autres formats existent" />
     <MESSAGE value="Add : Upload des images OK reste a faire la modale pour les upload et le bouton pour supprimer le test, verifier aussi que la lecture des fiches avec plusieurs classeurs marchent" />
@@ -573,7 +578,8 @@
     <MESSAGE value="EDIT : réactivation des animations des flash" />
     <MESSAGE value="ADD : debut de la refonte de l'interface 15%" />
     <MESSAGE value="ADD : refonte de l'interface 25%" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD : refonte de l'interface 25%" />
+    <MESSAGE value="ADD : refonte de l'interface 99% reste juste a paufiner, eventuellement refaire les form" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD : refonte de l'interface 99% reste juste a paufiner, eventuellement refaire les form" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

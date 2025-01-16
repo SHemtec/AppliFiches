@@ -30,6 +30,12 @@ class InterventionType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'row_attr' => ['class' => 'formGroup']
             ])
+            ->add('mdpEmail', TextType::class, [
+                'label' => 'Mot de passe Email',
+                'required' => false,
+                'attr' => ['class' => 'form-control'],
+                'row_attr' => ['class' => 'formGroup']
+            ])
             ->add('Probleme', TextareaType::class, [
                 'label' => 'Problème',
                 'attr' => ['class' => 'form-control'],

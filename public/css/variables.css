@@ -1,15 +1,16 @@
 :root {
-    --background: #21262C;
-    --acc: rgb(21, 189, 133);
-    --accBack: rgba(21, 189, 133, 0.33);
-    --accBackModal: rgba(21, 189, 133, 0.16);
-    --accLow: #149167;
+    --background: #10172A;
+    --acc: #FBBE24;
+    --acc2: #1E293B;
+    --accBack: rgba(251, 190, 36, 0.33);
+    --accBackModal: var(--accBack);
+    --accLow: #fde58a;
     --accWhite: #FFFFFF;
     --sub: #BEBEBE;
-    --gradientRight: linear-gradient(90deg, rgba(21,189,133,1) 70%, rgba(33,38,44,1) 90%);
-    --gradientBottom: linear-gradient(180deg, rgba(21,189,133,1) 28%, rgba(33,38,44,1) 93%);
-    --gradientMid: linear-gradient(90deg, rgba(33,38,44,1) 10%, rgba(21,189,133,1) 50%, rgba(33,38,44,1) 90%);
-    --gradientMidVertical: linear-gradient(0deg, rgba(33,38,44,1) 10%, rgba(21,189,133,1) 50%, rgba(33,38,44,1) 90%);
+    --gradientRight: linear-gradient(90deg, var(--acc) 70%, var(--background) 90%);
+    --gradientBottom: linear-gradient(180deg, var(--acc) 28%, var(--background) 93%);
+    --gradientMid: linear-gradient(90deg, var(--background), var(--acc) 50%, var(--background) 90%);
+    --gradientMidVertical: linear-gradient(0deg, var(--background) 10%, var(--acc) 50%, var(--background) 90%);
 }
 
 .acc {

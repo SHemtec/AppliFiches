@@ -9,6 +9,10 @@ body {
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 .preloaded {
     display: none;
 }
@@ -20,7 +24,7 @@ nav {
     align-items: center;
     padding: .4rem 2rem;
     background: var(--background);
-    color: var(--acc);
+    color: var(--accWhite);
     width: 100%;
     font-size: 1.3em;
     position: fixed;
@@ -39,13 +43,13 @@ nav ul {
 }
 
 nav a {
-    color: var(--acc);
+    color: var(--accWhite);
     text-decoration: none;
     transition: .3s;
 }
 
 nav a:hover {
-    color: #c2c2c2;
+    color: var(--acc);
 }
 
 nav a.active {
@@ -114,7 +118,7 @@ nav a.active::after {
 
 main {
     width: 70%;
-    padding-top: 8rem !important;
+    padding-top: 8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -229,7 +233,7 @@ main {
 .scrollerCard::before {
     content: '';
     position: absolute;
-    background: var(--acc);
+    background: var(--acc2);
     width: 20vw;
     max-width: 400px;
     min-width: 280px;
@@ -244,7 +248,7 @@ main {
 .scrollerCard .scrollerCardInnerCircle {
     min-width: 125px;
     height: 125px;
-    background: var(--accLow);
+    background: var(--accBack);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -253,7 +257,7 @@ main {
     z-index: 1;
     position: relative;
     left: 3%;
-    color: var(--background);
+    color: var(--acc);
     font-size: 2.6em;
 }
 
@@ -882,7 +886,7 @@ main {
 }
 
 .searchBar::placeholder {
-    color: var(--acc);
+    color: var(--accWhite);
 }
 
 /* ------------------------ Flash Messages ------------------------*/
@@ -1108,7 +1112,7 @@ main {
 .clientSection .status {
     position: absolute;
     font-size: 3.5em;
-    bottom: 1.5rem;
+    bottom: 2rem;
 }
 
 .contentSection {
@@ -1151,7 +1155,8 @@ main {
     color: var(--acc);
     transition: opacity 0.4s ease;
     opacity: 1;
-    position: absolute;
+    position: fixed;
+    top: 0;
     z-index: 10000;
 }
 
@@ -1304,6 +1309,82 @@ main {
     max-width: 315px;
     max-height: 315px;
 }
+
+@media print {
+    @page {
+        size: A5 landscape;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    .interventionContainer {
+        width: 100%;
+        padding-top: 0; !important;
+    }
+
+    .interventionWrapper {
+        border: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .card {
+        border: none;
+        margin: 0; !important;
+        box-shadow: none;
+        height: 100vh; !important;
+    }
+
+    .contentSection .ope {
+        padding: 4rem 0; !important;
+    }
+
+    .clientSection {
+        padding-top: 5rem; !important;
+    }
+
+    .clientSection .status {
+        bottom: 15%; !important;
+    }
+
+    .cloture {
+        display: none;
+    }
+
+    .interventionButtons {
+        display: none; !important;
+    }
+
+    .command {
+        display: none !important;
+    }
+
+    nav, h1, .btn {
+        display: none;
+    }
+
+    .interShowStatus i {
+        font-size: 350% !important;
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+    }
+}
+
 
 /* --------------------------------------  Login form ------------------------------------ */
 
@@ -1463,4 +1544,3 @@ main {
     color: var(--acc);
     cursor: pointer;
 }
-

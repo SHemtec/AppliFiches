@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use phpDocumentor\Reflection\Types\Nullable;
 
 #[ORM\Entity(repositoryClass: InterventionRepository::class)]
@@ -21,7 +22,9 @@ class Intervention
     private ?string $Materiel = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $MdpSession = null;
+    #[Assert\NotNull]
+    #[Assert\Type('string')]
+    private ?string $MdpSession = '';
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $Probleme = null;
@@ -65,6 +68,9 @@ class Intervention
     #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'intervention', cascade: ['persist', 'remove'])]
     private Collection $commande;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $mdpEmail = null;
+
 
     public function __construct()
     {
@@ -72,6 +78,13 @@ class Intervention
         $this->createdAt = new \DateTimeImmutable();
         $this->statut = 1;
         $this->commande = new ArrayCollection();
+        $this->MdpSession = '';
+    }
+
+    public function setMdpSession(?string $MdpSession): static
+    {
+        $this->MdpSession = $MdpSession ?? '';
+        return $this;
     }
 
     public function getId(): ?int
@@ -94,13 +107,6 @@ class Intervention
     public function getMdpSession(): ?string
     {
         return $this->MdpSession;
-    }
-
-    public function setMdpSession(string $MdpSession): static
-    {
-        $this->MdpSession = $MdpSession;
-
-        return $this;
     }
 
     public function getProbleme(): ?string
@@ -277,5 +283,17 @@ class Intervention
     public function getCommande(): Collection
     {
         return $this->commande;
+    }
+
+    public function getMdpEmail(): ?string
+    {
+        return $this->mdpEmail;
+    }
+
+    public function setMdpEmail(?string $mdpEmail): static
+    {
+        $this->mdpEmail = $mdpEmail;
+
+        return $this;
     }
 }

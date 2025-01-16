@@ -17,10 +17,7 @@ body {
     align-items: center;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
+
 
 h1 {
     position: relative;
@@ -848,70 +845,7 @@ main .clientWrapper .client .clientInfo span {
     background: #dc3545;
 }
 
-@media print {
-    @page {
-        size: A5;
-        margin: 0;
-        padding: 0;
-    }
 
-    body {
-        margin: 0;
-        font-family: "Roboto", sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .cloture {
-        display: none;
-    }
-
-    .interTests {
-        display: none !important;
-    }
-
-    .interTests, .interTestsButtons, .interTests h2 {
-        display: none;
-    }
-
-    article {
-        width: 100% !important;
-        padding: 0 2rem; !important;
-        height: 122vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: none !important;
-    }
-
-    .interInfoWrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem !important;
-        position: fixed;
-        top: 18%;
-        left: 2rem;
-    }
-
-    .interventionInfo h2 {
-        position: fixed;
-        top: 2rem;
-        left: 2rem;
-    }
-
-    nav, h1, .btn {
-        display: none;
-    }
-
-    .interShowStatus i {
-        font-size: 350% !important;
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-    }
-}
 
 
 
