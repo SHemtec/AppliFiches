@@ -279,7 +279,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 71%;
     padding-left: 12%;
     position: relative;
 }
@@ -618,7 +618,6 @@ main {
     font-size: 1em;
     background-color: var(--background);
     color: var(--accWhite);
-    box-sizing: border-box;
 }
 
 /* Modal container */
