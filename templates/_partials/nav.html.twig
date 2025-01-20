@@ -1,4 +1,9 @@
 <nav>
+    <div id="burgerMenu" class="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <ul id="navLinks">
         <li><a href="{{ path('app_main') }}" class="{{ app.request.attributes.get('_route') == 'app_main' ? 'active' : '' }}">Accueil</a></li>
         <li><a href="{{ path('app_client_index') }}" class="{{ app.request.attributes.get('_route') == 'app_client_index' ? 'active' : '' }}">Clients</a></li>
@@ -6,13 +11,13 @@
         <li><a href="{{ path('app_commandes_index') }}" class="{{ app.request.attributes.get('_route') == 'app_commandes_index' ? 'active' : '' }}">Commandes</a></li>
     </ul>
     {% if app.user %}
-        <div class="user-menu">
-            <div class="user-circle" id="userCircle">{{ app.user.username[:2]|upper }}</div>
-            <div class="dropdown-menu" id="dropdownMenu">
-                <a href="{{ path('app_logout') }}">Déconnexion</a>
-            </div>
-        </div>
     {% endif %}
+    <div class="user-menu">
+        <div class="user-circle" id="userCircle">{{ app.user.username[:2]|upper }}</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        </div>
+    </div>
 </nav>
 
 {% block javascripts %}
@@ -39,12 +44,19 @@
             const navLinks = document.getElementById('navLinks');
 
             burgerMenu.addEventListener('click', function() {
-                navLinks.classList.toggle('show');
+                if (navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                    navLinks.classList.add('hide');
+                } else {
+                    navLinks.classList.remove('hide');
+                    navLinks.classList.add('show');
+                }
             });
 
             document.addEventListener('click', function(event) {
                 if (!burgerMenu.contains(event.target) && !navLinks.contains(event.target)) {
                     navLinks.classList.remove('show');
+                    navLinks.classList.add('hide');
                 }
             });
         });
