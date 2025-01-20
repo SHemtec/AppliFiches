@@ -1383,6 +1383,14 @@ main {
         bottom: 2rem;
         right: 2rem;
     }
+
+    .flash-messages {
+        display: none; !important;
+    }
+
+    .flash-message {
+        display: none; !important;
+    }
 }
 
 

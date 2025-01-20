@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : refonte de l'interface 100%, ajout d'un champ mot de passe email, eventuellement refaire les form, faire le responsive">
+    <list default="true" id="249fce11-3d3f-4473-8d71-b59b88f17a5d" name="Changes" comment="ADD : responsive ok">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/styleNew.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styleNew.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_partials/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/nav.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/commandes/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commandes/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/intervention/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/intervention/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,6 +274,7 @@
       <workItem from="1737031169379" duration="4731000" />
       <workItem from="1737129605034" duration="744000" />
       <workItem from="1737130357556" duration="3593000" />
+      <workItem from="1737384570307" duration="409000" />
     </task>
     <task id="LOCAL-00001" summary="Add : creation des entités">
       <option name="closed" value="true" />
@@ -540,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737035566310</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="ADD : responsive ok">
+      <option name="closed" value="true" />
+      <created>1737384593166</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1737384593166</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -559,7 +567,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add : import des fiches FONCTIONNEL pour les format de 2014 et 2024 voir si d'autres formats existent" />
     <MESSAGE value="Add : Upload des images OK reste a faire la modale pour les upload et le bouton pour supprimer le test, verifier aussi que la lecture des fiches avec plusieurs classeurs marchent" />
     <MESSAGE value="Add : modale ok finir le style.css" />
     <MESSAGE value="Add : style ok remaniement de l'import ok et refonte de la fiche d'impression ok&#10;&#10;reste a voir les commandes refaire la relation et tester" />
@@ -584,7 +591,8 @@
     <MESSAGE value="ADD : refonte de l'interface 25%" />
     <MESSAGE value="ADD : refonte de l'interface 99% reste juste a paufiner, eventuellement refaire les form" />
     <MESSAGE value="ADD : refonte de l'interface 100%, ajout d'un champ mot de passe email, eventuellement refaire les form, faire le responsive" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD : refonte de l'interface 100%, ajout d'un champ mot de passe email, eventuellement refaire les form, faire le responsive" />
+    <MESSAGE value="ADD : responsive ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD : responsive ok" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
